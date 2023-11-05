@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="685.0" prefWidth="600.0" styleClass="root" stylesheets="@loginsignup.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.advance_group.HelloController">
+<AnchorPane prefHeight="685.0" prefWidth="600.0" styleClass="root" stylesheets="@loginsignup.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.advance_group.LoginSignup">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -34,7 +34,7 @@
                         <Font size="22.0" />
                     </font>
                 </PasswordField>
-                <TextField fx:id="signupusername" alignment="CENTER" layoutX="98.0" layoutY="205.0" onAction="#signupusername" promptText="Name" styleClass="inputfield">
+                <TextField fx:id="signupusername" alignment="CENTER" layoutX="98.0" layoutY="205.0" promptText="Name" styleClass="inputfield">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -47,14 +47,14 @@
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Button fx:id="gotologin" layoutX="244.0" layoutY="597.0" mnemonicParsing="false" onAction="#gologin" prefHeight="44.0" prefWidth="109.0" styleClass="pagechangebutton" text="Log In">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Button>
+<!--                <Button fx:id="gotologin" layoutX="244.0" layoutY="597.0" mnemonicParsing="false" onAction="#gologin" prefHeight="44.0" prefWidth="109.0" styleClass="pagechangebutton" text="Log In">-->
+<!--                    <font>-->
+<!--                        <Font size="20.0" />-->
+<!--                    </font>-->
+<!--                </Button>-->
                 <Button fx:id="signupbtn" layoutX="117.0" layoutY="528.0" mnemonicParsing="false" onAction="#Validatesignup" prefHeight="31.0" prefWidth="166.0" styleClass="loginsignup" text="Sign Up" />
                 <Button fx:id="usercancel" layoutX="117.0" layoutY="567.0" mnemonicParsing="false" onAction="#getcancel" prefHeight="31.0" prefWidth="166.0" styleClass="loginsignup" text="CANCEL" />
-                <TextField fx:id="signupemail" alignment="CENTER" layoutX="98.0" layoutY="262.0" onAction="#signupemail" promptText="Username" styleClass="inputfield">
+                <TextField fx:id="signupemail" alignment="CENTER" layoutX="98.0" layoutY="262.0" promptText="Username" styleClass="inputfield">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>

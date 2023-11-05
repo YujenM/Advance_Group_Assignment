@@ -1,0 +1,21 @@
+package com.example.advance_group;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class Databaseconnection {
+    public Connection databaselink;
+    public Connection getconnection(){
+        String databaseName="AP_GROUP_PROJECT";
+        String databaseUser="root";
+        String databasePassword="Sql123@321password";
+        String URL="jdbc:mysql://localhost/"+databaseName;
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            databaselink=DriverManager.getConnection(URL,databaseUser,databasePassword);
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }
+        return databaselink;
+    }
+}
