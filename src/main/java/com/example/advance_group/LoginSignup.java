@@ -156,7 +156,53 @@ public class LoginSignup {
 
 
     }
+// Login
+@FXML
+void gologin(ActionEvent event) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) gotologin.getScene().getWindow();
+        stage.setScene(scene);
+    } catch (IOException e) {
+        e.printStackTrace();
 
+    }
+}
+    public void validatelogin() {
+        Databaseconnection connectnow = new Databaseconnection();
+        Connection connectdb = connectnow.getconnection();
+        String verifyLogin = "SELECT count(1) FROM citizendatabase WHERE username = ? AND password = ?";
+
+        try {
+            PreparedStatement preparedStatement = connectdb.prepareStatement(verifyLogin);
+            preparedStatement.setString(1, getusername.getText());
+            preparedStatement.setString(2, getpassword.getText());
+            ResultSet querryresult = preparedStatement.executeQuery();
+
+            while (querryresult.next()) {
+                if (querryresult.getInt(1) == 1) {
+                    displaylogin.setText("welcome " + getusername.getText());
+                } else {
+                    displaylogin.setText("Invalid login");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            displaylogin.setText("Database Error");
+        }
+    }
+
+    @FXML
+    void getlogin(ActionEvent event) {
+        if(getusername.getText().isBlank()==false && getpassword.getText().isBlank()==false){
+            validatelogin();
+
+        }else {
+            displaylogin.setText("Enter your UserName and Password");
+        }
+    }
 
 
 
