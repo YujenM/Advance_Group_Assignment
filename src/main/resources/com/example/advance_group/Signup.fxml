@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="685.0" prefWidth="600.0" styleClass="root" stylesheets="@loginsignup.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.advance_group.LoginSignup">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <AnchorPane layoutX="117.0" layoutY="40.0" prefHeight="645.0" prefWidth="397.0" styleClass="boxbg" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="40.0">
+            <children>
+                <ImageView fitHeight="117.0" fitWidth="203.0" layoutX="98.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="481.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="98.99737548828125" AnchorPane.topAnchor="47.0">
+                    <image>
+                        <Image url="@login-removebg-preview.png" />
+                    </image>
+                </ImageView>
+                <Label alignment="CENTER" layoutX="116.0" layoutY="14.0" prefHeight="41.0" prefWidth="166.0" text="Sign Up" textAlignment="RIGHT">
+                    <font>
+                        <Font name="System Bold" size="27.0" />
+                    </font></Label>
+                <PasswordField fx:id="signuppassword" alignment="CENTER" layoutX="98.0" layoutY="323.0" promptText="Password" styleClass="inputfield" stylesheets="@loginsignup.css">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </PasswordField>
+                <TextField fx:id="signupusername" alignment="CENTER" layoutX="98.0" layoutY="205.0" promptText="Name" styleClass="inputfield">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </TextField>
+                <Label alignment="CENTER" layoutX="64.0" layoutY="598.0" prefHeight="41.0" prefWidth="200.0" text="Don't have an account?" textAlignment="RIGHT">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+<!--                <Button fx:id="gotologin" layoutX="244.0" layoutY="597.0" mnemonicParsing="false" onAction="#gologin" prefHeight="44.0" prefWidth="109.0" styleClass="pagechangebutton" text="Log In">-->
+<!--                    <font>-->
+<!--                        <Font size="20.0" />-->
+<!--                    </font>-->
+<!--                </Button>-->
+                <Button fx:id="signupbtn" layoutX="117.0" layoutY="528.0" mnemonicParsing="false" onAction="#Validatesignup" prefHeight="31.0" prefWidth="166.0" styleClass="loginsignup" text="Sign Up" />
+                <Button fx:id="usercancel" layoutX="117.0" layoutY="567.0" mnemonicParsing="false" onAction="#getcancel" prefHeight="31.0" prefWidth="166.0" styleClass="loginsignup" text="CANCEL" />
+                <TextField fx:id="signupemail" alignment="CENTER" layoutX="98.0" layoutY="262.0" promptText="Username" styleClass="inputfield">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="getcountry" alignment="CENTER" layoutX="94.0" layoutY="379.0" promptText="Country" styleClass="inputfield">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </TextField>
+                <DatePicker fx:id="getdob" layoutX="101.0" layoutY="436.0" prefHeight="31.0" prefWidth="211.0" promptText="DOB" styleClass="dob" />
+                <Label alignment="CENTER" layoutX="10.0" layoutY="479.0" prefHeight="41.0" prefWidth="109.0" text="Gender" textAlignment="RIGHT">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Label>
+                <RadioButton fx:id="male" layoutX="117.0" layoutY="484.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" text="Male">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="gender" />
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="female" layoutX="178.0" layoutY="484.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" text="Female" toggleGroup="$gender" />
+                <RadioButton fx:id="other" layoutX="260.0" layoutY="484.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" text="Others" toggleGroup="$gender" />
+                <Label fx:id="displaylsignupmessage" alignment="CENTER" layoutX="106.0" layoutY="164.0" prefHeight="41.0" prefWidth="200.0" textAlignment="RIGHT">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
