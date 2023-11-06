@@ -8,7 +8,7 @@
 }
 
 .inputfield{
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-pref-width: 200px;
     -fx-pref-height: 20px;
     -fx-border-width: 0 0 1 0;
