@@ -47,11 +47,11 @@
                         <Font size="15.0" />
                     </font>
                 </Label>
-<!--                <Button fx:id="gotologin" layoutX="244.0" layoutY="597.0" mnemonicParsing="false" onAction="#gologin" prefHeight="44.0" prefWidth="109.0" styleClass="pagechangebutton" text="Log In">-->
-<!--                    <font>-->
-<!--                        <Font size="20.0" />-->
-<!--                    </font>-->
-<!--                </Button>-->
+                <Button fx:id="gotologin" layoutX="244.0" layoutY="597.0" mnemonicParsing="false" onAction="#gologin" prefHeight="44.0" prefWidth="109.0" styleClass="pagechangebutton" text="Log In">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
                 <Button fx:id="signupbtn" layoutX="117.0" layoutY="528.0" mnemonicParsing="false" onAction="#Validatesignup" prefHeight="31.0" prefWidth="166.0" styleClass="loginsignup" text="Sign Up" />
                 <Button fx:id="usercancel" layoutX="117.0" layoutY="567.0" mnemonicParsing="false" onAction="#getcancel" prefHeight="31.0" prefWidth="166.0" styleClass="loginsignup" text="CANCEL" />
                 <TextField fx:id="signupemail" alignment="CENTER" layoutX="98.0" layoutY="262.0" promptText="Username" styleClass="inputfield">
