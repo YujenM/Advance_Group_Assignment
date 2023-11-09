@@ -10,10 +10,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -127,9 +124,8 @@ public class LoginSignup {
             displaylsignupmessage.setText("Database Error");
         }
     }
-
     public void Validatesignup() {
-        if(signupusername.getText().isBlank()==false && signupemail.getText().isBlank()==false && signuppassword.getText().isBlank()==false){
+        if (signupusername.getText().isBlank() == false && signupemail.getText().isBlank() == false && signuppassword.getText().isBlank() == false) {
             try {
                 String full_name = signupusername.getText();
                 String username = signupemail.getText();
@@ -139,13 +135,14 @@ public class LoginSignup {
                 RadioButton selectedGender = (RadioButton) gender.getSelectedToggle();
                 String gender = selectedGender.getText();
 
-
                 if (!full_name.isEmpty() && !username.isEmpty() && !password.isEmpty() && !country.isEmpty() && dob != null) {
-                    if(isUsernameTaken(username)){
-                        displaylsignupmessage.setText("Username already taken.");
-                    }else {
+                    // Check if the username already exists
+                    if (isUsernameTaken(full_name)) {
+                        displaylsignupmessage.setText( full_name + " already taken.");
+                    } else {
+                        // Save user to the database
                         saveUserToDatabase(full_name, username, password, country, dob, gender);
-                        displaylsignupmessage.setText("Signup successful!" );
+                        displaylsignupmessage.setText("Signup successful!");
                     }
                 } else {
                     displaylsignupmessage.setText("Please fill in all fields.");
@@ -153,22 +150,18 @@ public class LoginSignup {
             } catch (Exception e) {
                 displaylsignupmessage.setText("Database error");
             }
-
-        }else {
+        } else {
             displaylsignupmessage.setText("Fill the form");
         }
-
-
-
     }
-    private boolean isUsernameTaken(String username) {
+    private boolean isUsernameTaken(String full_name) {
         Databaseconnection connectnow = new Databaseconnection();
         Connection connectdb = connectnow.getconnection();
-        String checkUsernameQuery = "SELECT count(1) FROM citizendatabase WHERE username = ?";
+        String checkUsernameQuery = "SELECT count(1) FROM citizendatabase WHERE fullname = ?";
 
         try {
             PreparedStatement preparedStatement = connectdb.prepareStatement(checkUsernameQuery);
-            preparedStatement.setString(1, username);
+            preparedStatement.setString(1, full_name);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next() && resultSet.getInt(1) > 0) {
@@ -181,6 +174,7 @@ public class LoginSignup {
 
         return false;
     }
+
 // Login
 @FXML
 void gologin(ActionEvent event) {

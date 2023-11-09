@@ -34,4 +34,13 @@
     -fx-text-fill: black;
     -fx-alignment: center;
 }
+.textfield{
+    -fx-text-fill: black;
+    -fx-pref-width: 300px;
+    -fx-pref-height: 150px;
+    -fx-border-width: 1 1 1 1;
+    -fx-border-color: black;
+    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-prompt-text-fill: black;
+}
 
