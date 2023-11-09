@@ -141,8 +141,12 @@ public class LoginSignup {
 
 
                 if (!full_name.isEmpty() && !username.isEmpty() && !password.isEmpty() && !country.isEmpty() && dob != null) {
-                    saveUserToDatabase(full_name, username, password, country, dob, gender);
-                    displaylsignupmessage.setText("Signup successful!" );
+                    if(isUsernameTaken(username)){
+                        displaylsignupmessage.setText("Username already taken.");
+                    }else {
+                        saveUserToDatabase(full_name, username, password, country, dob, gender);
+                        displaylsignupmessage.setText("Signup successful!" );
+                    }
                 } else {
                     displaylsignupmessage.setText("Please fill in all fields.");
                 }
@@ -155,6 +159,27 @@ public class LoginSignup {
         }
 
 
+
+    }
+    private boolean isUsernameTaken(String username) {
+        Databaseconnection connectnow = new Databaseconnection();
+        Connection connectdb = connectnow.getconnection();
+        String checkUsernameQuery = "SELECT count(1) FROM citizendatabase WHERE username = ?";
+
+        try {
+            PreparedStatement preparedStatement = connectdb.prepareStatement(checkUsernameQuery);
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next() && resultSet.getInt(1) > 0) {
+                // Username already exists
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 // Login
 @FXML
