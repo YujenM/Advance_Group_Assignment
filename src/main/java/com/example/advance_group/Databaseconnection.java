@@ -12,10 +12,22 @@ public class Databaseconnection {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             databaselink=DriverManager.getConnection(URL,databaseUser,databasePassword);
-        }catch (Exception e){
+            System.out.println("Database Connection Successful");
+        } catch (Exception e){
             e.printStackTrace();
-
+            System.out.println("Database Connection Error");
         }
         return databaselink;
     }
+    public void closeConnection() {
+        try {
+            if (databaselink != null && !databaselink.isClosed()) {
+                databaselink.close();
+                System.out.println("Database Connection Closed");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -62,16 +62,6 @@ public class LoginSignup {
     private RadioButton other;
     @FXML
     private ToggleGroup gender;
-
-//    @FXML
-//    void getreadysignup(ActionEvent event) {
-//        if(signupusername.getText().isBlank()==false && signupemail.getText().isBlank()==false && signuppassword.getText().isBlank()==false){
-//            Validatesignup();
-//        }else {
-//            displaylsignupmessage.setText("Fill the form");
-//        }
-//    }
-
     @FXML
     void getcancel(ActionEvent event) {
         Stage stage=(Stage) usercancel.getScene().getWindow();
@@ -136,11 +126,10 @@ public class LoginSignup {
                 String gender = selectedGender.getText();
 
                 if (!full_name.isEmpty() && !username.isEmpty() && !password.isEmpty() && !country.isEmpty() && dob != null) {
-                    // Check if the username already exists
                     if (isUsernameTaken(full_name)) {
                         displaylsignupmessage.setText( full_name + " already taken.");
                     } else {
-                        // Save user to the database
+
                         saveUserToDatabase(full_name, username, password, country, dob, gender);
                         displaylsignupmessage.setText("Signup successful!");
                     }
@@ -165,7 +154,6 @@ public class LoginSignup {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next() && resultSet.getInt(1) > 0) {
-                // Username already exists
                 return true;
             }
         } catch (Exception e) {
