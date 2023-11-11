@@ -15,9 +15,6 @@ import java.sql.SQLException;
 public class AdditionalInfo {
 
     @FXML
-    private RadioButton female;
-
-    @FXML
     private ToggleGroup gender;
 
     @FXML

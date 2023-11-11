@@ -15,23 +15,23 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <children>
-        <AnchorPane layoutX="113.0" layoutY="23.0" prefHeight="544.0" prefWidth="397.0" styleClass="boxbg">
+        <AnchorPane layoutX="113.0" layoutY="23.0" prefHeight="574.0" prefWidth="397.0" styleClass="boxbg">
             <children>
-                <ImageView fitHeight="117.0" fitWidth="203.0" layoutX="98.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="98.99737548828125" AnchorPane.topAnchor="97.0">
+                <ImageView fitHeight="117.0" fitWidth="203.0" layoutX="89.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="357.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="107.99737548828125" AnchorPane.topAnchor="100.0">
                     <image>
                         <Image url="@login-removebg-preview.png" />
                     </image>
                 </ImageView>
-                <Label alignment="CENTER" layoutX="116.0" layoutY="41.0" prefHeight="41.0" prefWidth="166.0" text="Log In" textAlignment="RIGHT">
+                <Label alignment="CENTER" layoutX="106.0" layoutY="37.0" prefHeight="41.0" prefWidth="166.0" text="Log In" textAlignment="RIGHT">
                     <font>
                         <Font name="System Bold" size="27.0" />
                     </font></Label>
-                <PasswordField fx:id="getpassword" alignment="CENTER" layoutX="99.0" layoutY="330.0" promptText="Password" styleClass="inputfield" stylesheets="@loginsignup.css">
+                <PasswordField fx:id="getpassword" alignment="CENTER" layoutX="54.0" layoutY="330.0" promptText="Password" styleClass="inputfield" stylesheets="@loginsignup.css">
                     <font>
                         <Font size="22.0" />
                     </font>
                 </PasswordField>
-                <TextField fx:id="getusername" alignment="CENTER" layoutX="99.0" layoutY="282.0" promptText="Username" styleClass="inputfield">
+                <TextField fx:id="getusername" alignment="CENTER" layoutX="54.0" layoutY="264.0" promptText="Username" styleClass="inputfield">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -39,19 +39,19 @@
                         <Font size="22.0" />
                     </font>
                 </TextField>
-                <Label alignment="CENTER" layoutX="67.0" layoutY="482.0" prefHeight="41.0" prefWidth="200.0" text="Don't have an account?" textAlignment="RIGHT">
+                <Label alignment="CENTER" layoutX="33.0" layoutY="506.0" prefHeight="41.0" prefWidth="200.0" text="Don't have an account?" textAlignment="RIGHT">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Button fx:id="usersignup" layoutX="254.0" layoutY="481.0" mnemonicParsing="false" onAction="#getsignup" prefHeight="44.0" prefWidth="109.0" styleClass="pagechangebutton" text="Sign Up">
+                <Button fx:id="usersignup" layoutX="218.0" layoutY="505.0" mnemonicParsing="false" onAction="#getsignup" prefHeight="44.0" prefWidth="109.0" styleClass="pagechangebutton" text="Sign Up">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Button>
-                <Button fx:id="userlogin" layoutX="116.0" layoutY="403.0" mnemonicParsing="false" onAction="#getlogin" prefHeight="31.0" prefWidth="166.0" styleClass="loginsignup" text="LOG IN" />
-                <Button fx:id="usercancel" layoutX="116.0" layoutY="451.0" mnemonicParsing="false" onAction="#getcancel" prefHeight="31.0" prefWidth="166.0" styleClass="loginsignup" text="CANCEL" />
-            <Label fx:id="displaylogin" alignment="CENTER" layoutX="116.0" layoutY="223.0" prefHeight="41.0" prefWidth="166.0" textAlignment="RIGHT">
+                <Button fx:id="userlogin" layoutX="106.0" layoutY="404.0" mnemonicParsing="false" onAction="#getlogin" prefHeight="31.0" prefWidth="166.0" styleClass="loginsignup" text="LOG IN" />
+                <Button fx:id="usercancel" layoutX="106.0" layoutY="460.0" mnemonicParsing="false" onAction="#getcancel" prefHeight="31.0" prefWidth="166.0" styleClass="loginsignup" text="CANCEL" />
+            <Label fx:id="displaylogin" alignment="CENTER" layoutX="24.0" layoutY="217.0" prefHeight="41.0" prefWidth="330.0" textAlignment="RIGHT">
                <font>
                   <Font size="15.0" />
                </font>

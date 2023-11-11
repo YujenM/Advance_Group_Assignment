@@ -5,11 +5,12 @@
 .boxbg {
     -fx-background-color: rgba(255, 255, 255, 0.5);
     -fx-background-radius: 40;
+
 }
 
 .inputfield{
     -fx-text-fill: black;
-    -fx-pref-width: 200px;
+    -fx-pref-width: 250px;
     -fx-pref-height: 20px;
     -fx-border-width: 0 0 1 0;
     -fx-border-color: black;

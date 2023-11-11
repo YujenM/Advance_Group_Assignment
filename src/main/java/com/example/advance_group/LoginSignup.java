@@ -1,6 +1,5 @@
 package com.example.advance_group;
 
-import com.example.advance_group.Databaseconnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
-import java.time.LocalDate;
+
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 
@@ -84,20 +83,28 @@ public class LoginSignup {
         }
     }
 
+    public void gotoAdditionalinfopage(){
+        try {
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("AdditionalInformation.fxml"));
+            Parent root=loader.load();
+            Scene scene=new Scene(root);
+            Stage stage = (Stage) userlogin.getScene().getWindow();
+            stage.setScene(scene);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    private void saveUserToDatabase(String fullname, String username, String password, String country, LocalDate dob, String gender) {
+    private void saveUserToDatabase(String fullname, String username, String password) {
         Databaseconnection connectnow = new Databaseconnection();
         Connection connectdb = connectnow.getconnection();
-        String insertUserQuery = "INSERT INTO citizendatabase (fullname, username, password, nationality, DOB, gender) VALUES (?, ?, ?, ?, ?, ?)";
+        String insertUserQuery = "INSERT INTO citizendatabase (fullname, username, password) VALUES (?, ?, ?)";
 
         try {
             PreparedStatement preparedStatement = connectdb.prepareStatement(insertUserQuery);
             preparedStatement.setString(1, fullname);
             preparedStatement.setString(2, username);
             preparedStatement.setString(3, password);
-            preparedStatement.setString(4, country);
-            preparedStatement.setDate(5, java.sql.Date.valueOf(dob));
-            preparedStatement.setString(6, gender);
 
             int rowsInserted = preparedStatement.executeUpdate();
 
@@ -120,17 +127,14 @@ public class LoginSignup {
                 String full_name = signupusername.getText();
                 String username = signupemail.getText();
                 String password = signuppassword.getText();
-                String country = getcountry.getText();
-                LocalDate dob = getdob.getValue();
-                RadioButton selectedGender = (RadioButton) gender.getSelectedToggle();
-                String gender = selectedGender.getText();
 
-                if (!full_name.isEmpty() && !username.isEmpty() && !password.isEmpty() && !country.isEmpty() && dob != null) {
+
+                if (!full_name.isEmpty() && !username.isEmpty() && !password.isEmpty() ) {
                     if (isUsernameTaken(full_name)) {
                         displaylsignupmessage.setText( full_name + " already taken.");
                     } else {
 
-                        saveUserToDatabase(full_name, username, password, country, dob, gender);
+                        saveUserToDatabase(full_name, username, password);
                         displaylsignupmessage.setText("Signup successful!");
                     }
                 } else {
@@ -191,6 +195,7 @@ void gologin(ActionEvent event) {
             while (querryresult.next()) {
                 if (querryresult.getInt(1) == 1) {
                     displaylogin.setText("welcome " + getusername.getText());
+                    gotoAdditionalinfopage();
                 } else {
                     displaylogin.setText("Invalid login");
                 }
@@ -205,6 +210,7 @@ void gologin(ActionEvent event) {
     void getlogin(ActionEvent event) {
         if(getusername.getText().isBlank()==false && getpassword.getText().isBlank()==false){
             validatelogin();
+
 
         }else {
             displaylogin.setText("Enter your UserName and Password");
