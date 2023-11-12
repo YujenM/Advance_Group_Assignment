@@ -18,9 +18,9 @@
                         <Font name="System Bold" size="27.0" />
                     </font></Label>
                 <Button fx:id="taketestbtn" layoutX="149.0" layoutY="528.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="199.0" styleClass="loginsignup" text="Take a Test">
-                    <font>
-                        <Font size="15.0" />
-                    </font></Button>
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
                 <Label layoutX="71.0" layoutY="268.0" prefHeight="42.0" prefWidth="78.0" text="Gender" textAlignment="RIGHT">
                     <font>
                         <Font size="19.0" />
@@ -56,42 +56,42 @@
                         <Font size="19.0" />
                     </font>
                 </Label>
-                <Button fx:id="logout" layoutX="66.0" layoutY="470.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="166.0" styleClass="loginsignup" text="Log Out" />
-                <Label fx:id="displayfathername" layoutX="192.0" layoutY="113.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Label>
-                <Label fx:id="displaymothername" layoutX="192.0" layoutY="165.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Label>
-                <Label fx:id="displayyourname" layoutX="161.0" layoutY="219.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Label>
-                <Label fx:id="displaygender" layoutX="140.0" layoutY="268.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Label>
-                <Label fx:id="displaynationality" layoutX="173.0" layoutY="321.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Label>
-                <Label fx:id="displaycitizensip" layoutX="201.0" layoutY="372.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Label>
-                <Label fx:id="displaydob" layoutX="122.0" layoutY="421.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Label>
+            <Button fx:id="logout" layoutX="66.0" layoutY="470.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="166.0" styleClass="loginsignup" text="Log Out" />
+            <Label fx:id="displayfathername" layoutX="192.0" layoutY="113.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="displaymothername" layoutX="192.0" layoutY="165.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="displayyourname" layoutX="161.0" layoutY="219.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="displaygender" layoutX="140.0" layoutY="268.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="displaynationality" layoutX="173.0" layoutY="321.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="displaycitizensip" layoutX="201.0" layoutY="372.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="displaydob" layoutX="122.0" layoutY="421.0" prefHeight="42.0" prefWidth="294.0" textAlignment="RIGHT">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>

@@ -3,12 +3,8 @@ package com.example.advance_group;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
 import java.io.IOException;
-
 public class HelloApplication extends Application {
     private double xOffset = 0;
     private double yOffset = 0;
@@ -18,8 +14,6 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 620);
         stage.setTitle("Citizenship for Massai");
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initStyle(StageStyle.UTILITY);
         stage.setResizable(false);
         stage.setScene(scene);
 
