@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="709.0" prefWidth="671.0" styleClass="root" stylesheets="@loginsignup.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.advance_group.AdditionalInfo">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <AnchorPane layoutX="82.0" layoutY="27.0" prefHeight="642.0" prefWidth="521.0" styleClass="boxbg">
+            <children>
+                <Label alignment="CENTER" layoutX="110.0" layoutY="26.0" prefHeight="42.0" prefWidth="309.0" text="Additional Information" textAlignment="RIGHT">
+                    <font>
+                        <Font name="System Bold" size="27.0" />
+                    </font></Label>
+                <TextField fx:id="getmothername" layoutX="190.0" layoutY="163.0" prefHeight="31.0" prefWidth="166.0" styleClass="inputfield">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </TextField>
+                <Button fx:id="subitform" layoutX="171.0" layoutY="571.0" mnemonicParsing="false" onAction="#submitinfo" prefHeight="31.0" prefWidth="166.0" styleClass="loginsignup" text="Submit" />
+                <DatePicker fx:id="getadditonaldob" layoutX="110.0" layoutY="487.0" prefHeight="31.0" prefWidth="211.0" promptText="DOB" styleClass="dob" />
+                <Label layoutX="71.0" layoutY="272.0" prefHeight="42.0" prefWidth="78.0" text="Gender" textAlignment="RIGHT">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Label>
+                <RadioButton fx:id="male" layoutX="72.0" layoutY="313.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" text="Male">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="gender" />
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="female" layoutX="150.0" layoutY="313.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" text="Female" toggleGroup="$gender" />
+                <RadioButton fx:id="other" layoutX="251.0" layoutY="313.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" text="Others" toggleGroup="$gender" />
+                <Label alignment="CENTER" layoutX="64.0" layoutY="121.0" prefHeight="42.0" prefWidth="128.0" text="Father's Name :" textAlignment="RIGHT">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="66.0" layoutY="171.0" prefHeight="42.0" prefWidth="128.0" text="Mother's Name :" textAlignment="RIGHT">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="gerfathername" layoutX="183.0" layoutY="112.0" prefHeight="30.0" prefWidth="500.0" styleClass="inputfield">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="73.0" layoutY="222.0" prefHeight="42.0" prefWidth="110.0" text="Full Name :" textAlignment="RIGHT">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="getfullname" layoutX="151.0" layoutY="213.0" prefHeight="30.0" prefWidth="230.0" styleClass="inputfield">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="60.0" layoutY="371.0" prefHeight="42.0" prefWidth="102.0" text="Nationality" textAlignment="RIGHT">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Label>
+                <Label layoutX="60.0" layoutY="432.0" prefHeight="42.0" prefWidth="137.0" text="CitizenShip-ID: " textAlignment="RIGHT">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="getcitizenshipid" layoutX="190.0" layoutY="423.0" prefHeight="30.0" prefWidth="230.0" styleClass="inputfield">
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="60.0" layoutY="487.0" prefHeight="42.0" prefWidth="54.0" text="DOB: " textAlignment="RIGHT">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                </Label>
+            <ChoiceBox fx:id="selectcountry" layoutX="163.0" layoutY="379.0" prefWidth="150.0" />
+            <Label fx:id="additionalinfotext" alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="68.0" prefHeight="43.0" prefWidth="499.0">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

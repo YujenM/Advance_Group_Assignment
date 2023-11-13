@@ -1,0 +1,47 @@
+.root {
+    -fx-background-color: linear-gradient(to bottom, #7f7fff, #ff8080 50%, #7f7fff);
+}
+
+.boxbg {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-radius: 40;
+
+}
+
+.inputfield{
+    -fx-text-fill: black;
+    -fx-pref-width: 250px;
+    -fx-pref-height: 20px;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: black;
+    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-prompt-text-fill: black;
+
+}
+.loginsignup {
+    -fx-background-color: linear-gradient(to right, #00008b, #7f7fff);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-transform: uppercase;
+    -fx-background-radius: 40;
+}
+.pagechangebutton{
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+}
+.dob {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-alignment: center;
+}
+.textfield{
+    -fx-text-fill: black;
+    -fx-pref-width: 300px;
+    -fx-pref-height: 150px;
+    -fx-border-width: 1 1 1 1;
+    -fx-border-color: black;
+    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-prompt-text-fill: black;
+}
+
