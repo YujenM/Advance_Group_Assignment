@@ -6,8 +6,9 @@ import javafx.scene.control.Label;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class useradditionalpage {
+public class useradditionalpage{
 
     @FXML
     private Label displayfathername;
@@ -19,6 +20,9 @@ public class useradditionalpage {
     private Label displayyourname;
 
     @FXML
+    private Label displaygender;
+
+    @FXML
     private Label displaynationality;
 
     @FXML
@@ -27,22 +31,21 @@ public class useradditionalpage {
     @FXML
     private Label displaydob;
 
-    @FXML
-    private  Label displaygender;
+    private int loggedInUserId;
 
-    public void initialize() {
+    public void initialize(int loggedInUserId) {
+        this.loggedInUserId = loggedInUserId;
         fetchDataFromDatabase();
     }
 
     private void fetchDataFromDatabase() {
         try {
-            Databaseconnection dbConnection = new Databaseconnection();
-            Connection connection = dbConnection.getconnection();
-            String query = "SELECT Fathername, Mothername, UserName, Nationality, CitizenshipId, Gender, Dob FROM additionalinfo WHERE id = ?";
-            int userId = 1;
+            Databaseconnection databaseconnection = new Databaseconnection();
+            Connection connectdb = databaseconnection.getconnection();
 
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, userId);
+            String selectInfoQuery = "SELECT * FROM additionalinfo WHERE id = ?";
+            PreparedStatement preparedStatement = connectdb.prepareStatement(selectInfoQuery);
+            preparedStatement.setInt(1, loggedInUserId);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -50,17 +53,16 @@ public class useradditionalpage {
                 displayfathername.setText(resultSet.getString("Fathername"));
                 displaymothername.setText(resultSet.getString("Mothername"));
                 displayyourname.setText(resultSet.getString("UserName"));
+                displaygender.setText(resultSet.getString("Gender"));
                 displaynationality.setText(resultSet.getString("Nationality"));
                 displaycitizensip.setText(resultSet.getString("CitizenshipId"));
-                displaygender.setText(resultSet.getString("Gender"));
                 displaydob.setText(resultSet.getString("Dob"));
             }
-            dbConnection.closeConnection();
 
-        } catch (Exception e) {
+            preparedStatement.close();
+            databaseconnection.closeConnection();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
-
 }

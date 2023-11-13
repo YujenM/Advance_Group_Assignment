@@ -4,7 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
+
 public class HelloApplication extends Application {
     private double xOffset = 0;
     private double yOffset = 0;
@@ -17,6 +20,7 @@ public class HelloApplication extends Application {
         stage.setResizable(false);
         stage.setScene(scene);
 
+
         scene.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
@@ -28,7 +32,7 @@ public class HelloApplication extends Application {
         });
 
         stage.show();
-    }
+    }   
 
     public static void main(String[] args) {
         launch();

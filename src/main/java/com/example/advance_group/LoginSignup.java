@@ -14,10 +14,11 @@ import java.sql.*;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 
-
 public class LoginSignup {
+
     @FXML
     private Label displaylogin;
+
     @FXML
     private TextField getpassword;
 
@@ -32,16 +33,22 @@ public class LoginSignup {
 
     @FXML
     private Button usersignup;
+
     @FXML
     private Label displaylsignupmessage;
+
     @FXML
     private Button gotologin;
+
     @FXML
     private Button signupbtn;
+
     @FXML
     private TextField signupemail;
+
     @FXML
     private PasswordField signuppassword;
+
     @FXML
     private TextField signupusername;
 
@@ -59,15 +66,18 @@ public class LoginSignup {
 
     @FXML
     private RadioButton other;
+
     @FXML
     private ToggleGroup gender;
+
+    private int loggedInUserId;
+
     @FXML
     void getcancel(ActionEvent event) {
-        Stage stage=(Stage) usercancel.getScene().getWindow();
+        Stage stage = (Stage) usercancel.getScene().getWindow();
         stage.close();
     }
 
-    // go to signup page
     @FXML
     void getsignup(ActionEvent event) {
         try {
@@ -83,14 +93,17 @@ public class LoginSignup {
         }
     }
 
-    public void gotoAdditionalinfopage(){
+    public void gotoAdditionalinfopage() {
         try {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("AdditionalInformation.fxml"));
-            Parent root=loader.load();
-            Scene scene=new Scene(root);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AdditionalInformation.fxml"));
+            Parent root = loader.load();
+
+            AdditionalInfo additionalInfoController = loader.getController();
+            additionalInfoController.initialize(loggedInUserId);
+            Scene scene = new Scene(root);
             Stage stage = (Stage) userlogin.getScene().getWindow();
             stage.setScene(scene);
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -121,6 +134,7 @@ public class LoginSignup {
             displaylsignupmessage.setText("Database Error");
         }
     }
+
     public void Validatesignup() {
         if (signupusername.getText().isBlank() == false && signupemail.getText().isBlank() == false && signuppassword.getText().isBlank() == false) {
             try {
@@ -128,12 +142,10 @@ public class LoginSignup {
                 String username = signupemail.getText();
                 String password = signuppassword.getText();
 
-
-                if (!full_name.isEmpty() && !username.isEmpty() && !password.isEmpty() ) {
+                if (!full_name.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
                     if (isUsernameTaken(full_name)) {
-                        displaylsignupmessage.setText( full_name + " already taken.");
+                        displaylsignupmessage.setText(full_name + " already taken.");
                     } else {
-
                         saveUserToDatabase(full_name, username, password);
                         displaylsignupmessage.setText("Signup successful!");
                     }
@@ -147,6 +159,7 @@ public class LoginSignup {
             displaylsignupmessage.setText("Fill the form");
         }
     }
+
     private boolean isUsernameTaken(String full_name) {
         Databaseconnection connectnow = new Databaseconnection();
         Connection connectdb = connectnow.getconnection();
@@ -167,38 +180,40 @@ public class LoginSignup {
         return false;
     }
 
-// Login
-@FXML
-void gologin(ActionEvent event) {
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) gotologin.getScene().getWindow();
-        stage.setScene(scene);
-    } catch (IOException e) {
-        e.printStackTrace();
-
+    @FXML
+    void gologin(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) gotologin.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-}
+//    private useradditionalpage useradditionalpage = new useradditionalpage();
+    private  AdditionalInfo AdditionalInfo=new AdditionalInfo();
+
     public void validatelogin() {
         Databaseconnection connectnow = new Databaseconnection();
         Connection connectdb = connectnow.getconnection();
-        String verifyLogin = "SELECT count(1) FROM citizendatabase WHERE username = ? AND password = ?";
+        String verifyLogin = "SELECT id FROM citizendatabase WHERE username = ? AND password = ?";
 
         try {
             PreparedStatement preparedStatement = connectdb.prepareStatement(verifyLogin);
             preparedStatement.setString(1, getusername.getText());
             preparedStatement.setString(2, getpassword.getText());
-            ResultSet querryresult = preparedStatement.executeQuery();
+            ResultSet queryResult = preparedStatement.executeQuery();
 
-            while (querryresult.next()) {
-                if (querryresult.getInt(1) == 1) {
-                    displaylogin.setText("welcome " + getusername.getText());
-                    gotoAdditionalinfopage();
-                } else {
-                    displaylogin.setText("Invalid login");
-                }
+            if (queryResult.next()) {
+                loggedInUserId = queryResult.getInt("id");
+                System.out.println("loggedInUserId: " + loggedInUserId);
+                displaylogin.setText("Welcome " + getusername.getText());
+                AdditionalInfo.setLoggedInUserId(loggedInUserId);
+                gotoAdditionalinfopage();
+            } else {
+                displaylogin.setText("Invalid login");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -206,22 +221,17 @@ void gologin(ActionEvent event) {
         }
     }
 
+    public int getLoggedInUserId() {
+        return loggedInUserId;
+    }
+
     @FXML
     void getlogin(ActionEvent event) {
-        if(getusername.getText().isBlank()==false && getpassword.getText().isBlank()==false){
+        if (getusername.getText().isBlank() == false && getpassword.getText().isBlank() == false) {
             validatelogin();
 
-
-        }else {
+        } else {
             displaylogin.setText("Enter your UserName and Password");
         }
     }
-
-
-
-
-
-
-
-
 }

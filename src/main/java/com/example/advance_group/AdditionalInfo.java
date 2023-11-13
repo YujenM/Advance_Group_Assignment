@@ -1,22 +1,24 @@
 package com.example.advance_group;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
 public class AdditionalInfo {
+    //      Additionalinfofxml
+    @FXML
+    private Label additionalinfotext;
+
+    @FXML
+    private RadioButton female;
 
     @FXML
     private ToggleGroup gender;
@@ -37,59 +39,66 @@ public class AdditionalInfo {
     private TextField getmothername;
 
     @FXML
-    private Button subitform;
+    private RadioButton male;
 
-
+    @FXML
+    private RadioButton other;
 
     @FXML
     private ChoiceBox<String> selectcountry;
 
-
+    @FXML
+    private Button subitform;
 
     private Databaseconnection databaseconnection;
+    private int loggedInUserId;
 
     public AdditionalInfo() {
+
         databaseconnection = new Databaseconnection();
     }
+
     @FXML
-    public void initialize() {
+    public void initialize(int loggedInUserId) {
+        this.loggedInUserId = loggedInUserId;
+        System.out.println("Initializing AdditionalInfo controller.");
         selectcountry.getItems().addAll("Thailand", "Malaysia", "Singapore");
     }
 
-    public void gotouseradtionalinfopage(){
+    public void gotouseradtionalinfopage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("userinformation.fxml"));
             Parent root = loader.load();
+
+            // Get the controller associated with the FXML file
+            useradditionalpage controller = loader.getController();
+            controller.initialize(loggedInUserId);
+
             Scene scene = new Scene(root);
             Stage stage = (Stage) subitform.getScene().getWindow();
             stage.setScene(scene);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void submitinfo() {
-        if (gerfathername.getText().isEmpty() || getmothername.getText().isEmpty() ||
-                getfullname.getText().isEmpty() || gender.getSelectedToggle() == null ||
-                selectcountry.getValue() == null || getcitizenshipid.getText().isEmpty() ||
-                getadditonaldob.getValue() == null) {
-            System.out.println("Please fill out all fields in the form.");
-            return;
-        }
+    public void submitinfo(ActionEvent event) {
         try {
             Connection connectdb = databaseconnection.getconnection();
-            String insertInfoQuery = "INSERT INTO additionalinfo (Fathername, Mothername, UserName, Gender, Nationality, CitizenshipId, Dob) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String insertInfoQuery = "INSERT INTO additionalinfo (id,Fathername, Mothername, UserName, Gender, Nationality, CitizenshipId, Dob) VALUES (?,?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = connectdb.prepareStatement(insertInfoQuery);
-            preparedStatement.setString(1, gerfathername.getText());
-            preparedStatement.setString(2, getmothername.getText());
-            preparedStatement.setString(3, getfullname.getText());
+            preparedStatement.setInt(1, loggedInUserId);
+            preparedStatement.setString(2, gerfathername.getText());
+            preparedStatement.setString(3, getmothername.getText());
+            preparedStatement.setString(4, getfullname.getText());
 
             RadioButton selectedGender = (RadioButton) gender.getSelectedToggle();
-            preparedStatement.setString(4, selectedGender.getText());
+            preparedStatement.setString(5, selectedGender.getText());
             String selectedCountry = selectcountry.getValue();
-            preparedStatement.setString(5, selectedCountry);
-            preparedStatement.setObject(6, getcitizenshipid.getText());
-            preparedStatement.setObject(7, getadditonaldob.getValue());
+            preparedStatement.setString(6, selectedCountry);
+            preparedStatement.setObject(7, getcitizenshipid.getText());
+            preparedStatement.setObject(8, getadditonaldob.getValue());
+
 
 
 
@@ -97,7 +106,9 @@ public class AdditionalInfo {
 
             if (rowsInserted > 0) {
                 System.out.println("Additional info saved to the 'additionalinfo' table.");
+//                fetchDataFromDatabase();
                 gotouseradtionalinfopage();
+
             } else {
                 System.out.println("Failed to save additional info.");
             }
@@ -108,5 +119,12 @@ public class AdditionalInfo {
             e.printStackTrace();
 
         }
+
+
+
+    }
+
+
+    public void setLoggedInUserId(int loggedInUserId) {
     }
 }

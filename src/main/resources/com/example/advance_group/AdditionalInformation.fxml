@@ -18,7 +18,7 @@
     <children>
         <AnchorPane layoutX="82.0" layoutY="27.0" prefHeight="642.0" prefWidth="521.0" styleClass="boxbg">
             <children>
-                <Label alignment="CENTER" layoutX="110.0" layoutY="23.0" prefHeight="42.0" prefWidth="309.0" text="Additional Information" textAlignment="RIGHT">
+                <Label alignment="CENTER" layoutX="110.0" layoutY="26.0" prefHeight="42.0" prefWidth="309.0" text="Additional Information" textAlignment="RIGHT">
                     <font>
                         <Font name="System Bold" size="27.0" />
                     </font></Label>
@@ -99,6 +99,11 @@
                     </font>
                 </Label>
             <ChoiceBox fx:id="selectcountry" layoutX="163.0" layoutY="379.0" prefWidth="150.0" />
+            <Label fx:id="additionalinfotext" alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="68.0" prefHeight="43.0" prefWidth="499.0">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>
