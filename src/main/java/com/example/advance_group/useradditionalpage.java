@@ -1,8 +1,14 @@
 package com.example.advance_group;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,6 +44,8 @@ public class useradditionalpage{
         fetchDataFromDatabase();
     }
 
+    @FXML
+    private Button logout;
     private void fetchDataFromDatabase() {
         try {
             Databaseconnection databaseconnection = new Databaseconnection();
@@ -64,5 +72,20 @@ public class useradditionalpage{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void getlogout() {
+
+        Databaseconnection databaseconnection = new Databaseconnection();
+        databaseconnection.closeConnection();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) logout.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
