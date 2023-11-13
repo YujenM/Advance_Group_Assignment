@@ -107,6 +107,20 @@ public class LoginSignup {
             e.printStackTrace();
         }
     }
+    public void gotouseradtionalinfopage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("userinformation.fxml"));
+            Parent root = loader.load();
+            useradditionalpage controller = loader.getController();
+            controller.initialize(loggedInUserId);
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) userlogin.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private void saveUserToDatabase(String fullname, String username, String password) {
         Databaseconnection connectnow = new Databaseconnection();
@@ -209,9 +223,16 @@ public class LoginSignup {
             if (queryResult.next()) {
                 loggedInUserId = queryResult.getInt("id");
                 System.out.println("loggedInUserId: " + loggedInUserId);
-                displaylogin.setText("Welcome " + getusername.getText());
-                AdditionalInfo.setLoggedInUserId(loggedInUserId);
-                gotoAdditionalinfopage();
+                if (isAdditionalInfoFilled(loggedInUserId)) {
+                    displaylogin.setText("Welcome back! You have already filled the form.");
+                    gotouseradtionalinfopage();
+
+                } else {
+                    displaylogin.setText("Welcome " + getusername.getText());
+                    AdditionalInfo.setLoggedInUserId(loggedInUserId);
+                    gotoAdditionalinfopage();
+                }
+
             } else {
                 displaylogin.setText("Invalid login");
             }
@@ -219,6 +240,23 @@ public class LoginSignup {
             e.printStackTrace();
             displaylogin.setText("Database Error");
         }
+    }
+    private boolean isAdditionalInfoFilled(int userId) {
+        Databaseconnection connectnow = new Databaseconnection();
+        Connection connectdb = connectnow.getconnection();
+        String checkAdditionalInfoQuery = "SELECT id FROM additionalinfo WHERE id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connectdb.prepareStatement(checkAdditionalInfoQuery);
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return resultSet.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
     public int getLoggedInUserId() {

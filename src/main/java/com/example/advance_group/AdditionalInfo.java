@@ -65,6 +65,7 @@ public class AdditionalInfo {
         selectcountry.getItems().addAll("Thailand", "Malaysia", "Singapore");
     }
 
+
     public void gotouseradtionalinfopage() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("userinformation.fxml"));
