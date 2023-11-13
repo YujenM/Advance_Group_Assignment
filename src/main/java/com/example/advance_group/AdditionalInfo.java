@@ -14,11 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 public class AdditionalInfo {
     //      Additionalinfofxml
-    @FXML
-    private Label additionalinfotext;
-
-    @FXML
-    private RadioButton female;
 
     @FXML
     private ToggleGroup gender;
@@ -37,12 +32,6 @@ public class AdditionalInfo {
 
     @FXML
     private TextField getmothername;
-
-    @FXML
-    private RadioButton male;
-
-    @FXML
-    private RadioButton other;
 
     @FXML
     private ChoiceBox<String> selectcountry;

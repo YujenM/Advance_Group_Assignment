@@ -41,9 +41,6 @@ public class LoginSignup {
     private Button gotologin;
 
     @FXML
-    private Button signupbtn;
-
-    @FXML
     private TextField signupemail;
 
     @FXML
@@ -51,25 +48,6 @@ public class LoginSignup {
 
     @FXML
     private TextField signupusername;
-
-    @FXML
-    private TextField getcountry;
-
-    @FXML
-    private DatePicker getdob;
-
-    @FXML
-    private RadioButton female;
-
-    @FXML
-    private RadioButton male;
-
-    @FXML
-    private RadioButton other;
-
-    @FXML
-    private ToggleGroup gender;
-
     private int loggedInUserId;
 
     @FXML
