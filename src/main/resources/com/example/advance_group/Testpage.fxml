@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="663.0" prefWidth="1044.0" styleClass="root" stylesheets="@test.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.advance_group.Quizpagecontroller">
+    <Label fx:id="getquestion" alignment="CENTER" layoutX="26.0" layoutY="140.0" prefHeight="162.0" prefWidth="995.0" styleClass="hexagon" text="Question" textFill="WHITE" />
+    <Button fx:id="btnopt1" layoutX="54.0" layoutY="329.0" mnemonicParsing="false" onAction="#option1clicked" prefHeight="93.0" prefWidth="469.0" styleClass="hexagon" text="option 1" textFill="WHITE" />
+    <Button fx:id="btnopt2" layoutX="523.0" layoutY="329.0" mnemonicParsing="false" onAction="#option2clicked" prefHeight="93.0" prefWidth="469.0" styleClass="hexagon" text="option 2" textFill="WHITE" />
+    <Button fx:id="btnopt3" layoutX="54.0" layoutY="432.0" mnemonicParsing="false" onAction="#option3clicked" prefHeight="93.0" prefWidth="469.0" styleClass="hexagon" text="option 3" textFill="WHITE" />
+    <Button fx:id="btnopt4" layoutX="523.0" layoutY="432.0" mnemonicParsing="false" onAction="#option4clicked" prefHeight="93.0" prefWidth="469.0" styleClass="hexagon" text="option 4" textFill="WHITE" />
+    <Button fx:id="previusquestion" layoutX="183.0" layoutY="554.0" mnemonicParsing="false" onAction="#getpreviousquestion" prefHeight="62.0" prefWidth="227.0" styleClass="hexagon" text="Previous Qusetion" textFill="WHITE" />
+    <Button fx:id="nextquestion" layoutX="637.0" layoutY="554.0" mnemonicParsing="false" onAction="#loadNextQuestion" prefHeight="62.0" prefWidth="227.0" styleClass="hexagon" text="Next Question" textFill="WHITE" />
+    <Button fx:id="submitbtn" layoutX="410.0" layoutY="554.0" mnemonicParsing="false" onAction="#submitButtonClicked" prefHeight="62.0" prefWidth="227.0" styleClass="hexagon" text="Submit" textFill="WHITE" />
+    <Label fx:id="settimer" alignment="CENTER" contentDisplay="CENTER" layoutX="462.0" layoutY="22.0" prefHeight="39.0" prefWidth="150.0" text="4:00" textFill="WHITE">
+        <font>
+            <Font size="24.0" />
+        </font>
+    </Label>
+    <Label fx:id="noofquestionattempted" alignment="CENTER" contentDisplay="CENTER" layoutX="298.0" layoutY="73.0" prefHeight="39.0" prefWidth="479.0" textFill="WHITE">
+        <font>
+            <Font size="15.0" />
+        </font>
+    </Label>
+</AnchorPane>
