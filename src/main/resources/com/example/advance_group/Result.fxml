@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="542.0" prefWidth="819.0" styleClass="root" stylesheets="@loginsignup.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.advance_group.Result">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <AnchorPane layoutX="62.0" layoutY="32.0" prefHeight="453.0" prefWidth="694.0" styleClass="boxbg">
+            <children>
+                <Label fx:id="displaylsignupmessage" layoutX="161.0" layoutY="113.0" prefHeight="42.0" prefWidth="168.0" text="XYX" textAlignment="RIGHT">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="294.0" layoutY="32.0" prefHeight="54.0" prefWidth="112.0" text="Result">
+                    <font>
+                        <Font size="37.0" />
+                    </font>
+                </Label>
+                <Label layoutX="130.0" layoutY="187.0" />
+                <Label layoutX="80.0" layoutY="116.0" text="Name: ">
+                    <font>
+                        <Font size="26.0" />
+                    </font>
+                </Label>
+                <Label layoutX="385.0" layoutY="168.0">
+                    <font>
+                        <Font size="26.0" />
+                    </font>
+                </Label>
+                <Label layoutX="336.0" layoutY="115.0" prefHeight="38.0" prefWidth="145.0" text="Nationality:">
+                    <font>
+                        <Font size="26.0" />
+                    </font>
+                </Label>
+                <Label fx:id="displaylsignupmessage1" layoutX="487.0" layoutY="113.0" prefHeight="42.0" prefWidth="168.0" text="XYX" textAlignment="RIGHT">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Label fx:id="qustionattempted" alignment="CENTER" layoutX="50.0" layoutY="206.0" prefHeight="82.0" prefWidth="194.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 16px; -fx-border-radius: 16px;" text="8/10" textFill="WHITE">
+                    <font>
+                        <Font size="25.0" />
+                    </font></Label>
+                <ProgressIndicator fx:id="correctProgress" layoutX="297.0" layoutY="197.0" minHeight="100.0" minWidth="100.0" prefHeight="128.0" prefWidth="131.0" progress="0.8" style="-fx-background-color: lightgreen; -fx-progress-color: green; -fx-font-weight: 900; -fx-font-size: 16PX; -fx-background-radius: 16PX; -fx-border-radius: 16PX; -fx-box-border: green;">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </ProgressIndicator>
+
+                <ProgressIndicator fx:id="wrongProgress" layoutX="471.0" layoutY="197.0" minHeight="100.0" minWidth="100.0" prefHeight="128.0" prefWidth="131.0" progress="0.2" style="-fx-background-color: #d77979; -fx-progress-color: red; -fx-font-weight: 900; -fx-font-size: 16PX; -fx-background-radius: 16PX; -fx-border-radius: 16PX; -fx-box-border: red;">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </ProgressIndicator>
+                <Button layoutX="269.0" layoutY="333.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="119.0" styleClass="loginsignup" text="logout" />
+                <Button layoutX="101.0" layoutY="333.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="119.0" styleClass="loginsignup" text="Go to Home Page" />
+
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
