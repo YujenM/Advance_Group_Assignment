@@ -44,4 +44,16 @@
     -fx-background-color: rgba(0, 0, 0, 0);
     -fx-prompt-text-fill: black;
 }
+.textarea {
+    -fx-background-color: #F0F0F0;
+    -fx-background-insets: 0;
+    -fx-padding: 10;
+    -fx-border-color: #CCCCCC;
+    -fx-border-width: 1;
+}
+
+.textarea .scroll-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
 

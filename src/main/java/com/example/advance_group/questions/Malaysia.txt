@@ -1,21 +1,20 @@
-Question,Options,Answer
-What is the official religion of Malaysia?,a) Buddhism, b) Hinduism, c) Islam, d) Christianity,c) Islam
-Which two regions make up East Malaysia?,a) Penang and Selangor, b) Sabah and Sarawak, c) Johor and Perak, d) Pahang and Kelantan,b) Sabah and Sarawak
-What is the currency of Malaysia?,a) Baht, b) Ringgit, c) Rupiah, d) Yen,b) Ringgit
-Which Malaysian state is known as the "Land of the Hornbills"?,a) Penang, b) Sarawak, c) Perlis, d) Pahang,b) Sarawak
-What is the capital city of Malaysia?,a) Kuala Lumpur, b) Bangkok, c) Singapore, d) Jakarta,a) Kuala Lumpur
-What is the national flower of Malaysia?,a) Hibiscus, b) Orchid, c) Rose, d) Sunflower,a) Hibiscus
-Malaysia is known for its diverse cuisine. What is the popular Malaysian dish made with stir-fried rice noodles?,a) Dim Sum, b) Pho, c) Sushi, d) Char Kway Teow,d) Char Kway Teow
-Which famous twin towers are located in Kuala Lumpur?,a) Petronas Twin Towers, b) Taipei 101, c) Burj Khalifa, d) Willis Tower,a) Petronas Twin Towers
-What is the largest ethnic group in Malaysia?,a) Malays, b) Chinese, c) Indians, d) Orang Asli,a) Malays
-Malaysia has a famous island known for its crystal-clear waters and coral reefs. What is it called?,a) Bali, b) Phuket, c) Langkawi, d) Tioman,d) Tioman
-What is the name of the traditional Malay dress for women?,a) Kimono, b) Sari, c) Baju Melayu, d) Baju Kurung,d) Baju Kurung
-Which historical city in Malaysia is known for its well-preserved Dutch colonial architecture?,a) George Town, b) Kuala Lumpur, c) Malacca, d) Kuching,c) Malacca
-Malaysia's national car brand is known as:,a) Proton, b) Perodua, c) Toyota, d) Honda,a) Proton
-What is the name of the traditional Malay martial art?,a) Taekwondo, b) Silat, c) Kung Fu, d) Judo,b) Silat
-The highest mountain in Southeast Asia, Mount Kinabalu, is located in which Malaysian state?,a) Selangor, b) Pahang, c) Sabah, d) Johor,c) Sabah
-Which river is the longest in Malaysia?,a) Sungai Kelantan, b) Sungai Perak, c) Sungai Pahang, d) Sungai Rajang,c) Sungai Pahang
-What is the official language of Malaysia?,a) English, b) Malay, c) Chinese, d) Tamil,b) Malay
-What is the name of the Malaysian dish consisting of rice cooked in coconut milk and served with various accompaniments?,a) Pho, b) Nasi Lemak, c) Pad Thai, d) Biryani,b) Nasi Lemak
-Malaysia has a famous festival celebrating the victory of good over evil. What is it called?,a) Chinese New Year, b) Hari Raya Aidilfitri, c) Deepavali, d) Diwali,c) Deepavali
-In which year did Malaysia gain its independence from British colonial rule?,a) 1945, b) 1957, c) 1963, d) 1957,c) 1963
+What is the official religion of Malaysia?,a) Buddhism, b) Hinduism, c) Islam, d) Christianity,3
+Which two regions make up East Malaysia?,a) Penang and Selangor, b) Sabah and Sarawak, c) Johor and Perak, d) Pahang and Kelantan,2
+What is the currency of Malaysia?,a) Baht, b) Ringgit, c) Rupiah, d) Yen,2
+Which Malaysian state is known as the "Land of the Hornbills"?,a) Penang, b) Sarawak, c) Perlis, d) Pahang,2
+What is the capital city of Malaysia?,a) Kuala Lumpur, b) Bangkok, c) Singapore, d) Jakarta,1
+What is the national flower of Malaysia?,a) Hibiscus, b) Orchid, c) Rose, d) Sunflower,1
+Malaysia is known for its diverse cuisine. What is the popular Malaysian dish made with stir-fried rice noodles?,a) Dim Sum, b) Pho, c) Sushi, d) Char Kway Teow,4
+Which famous twin towers are located in Kuala Lumpur?,a) Petronas Twin Towers, b) Taipei 101, c) Burj Khalifa, d) Willis Tower,1
+What is the largest ethnic group in Malaysia?,a) Malays, b) Chinese, c) Indians, d) Orang Asli,1
+Malaysia has a famous island known for its crystal-clear waters and coral reefs. What is it called?,a) Bali, b) Phuket, c) Langkawi, d) Tioman,4
+What is the name of the traditional Malay dress for women?,a) Kimono, b) Sari, c) Baju Melayu, d) Baju Kurung,4
+Which historical city in Malaysia is known for its well-preserved Dutch colonial architecture?,a) George Town, b) Kuala Lumpur, c) Malacca, d) Kuching,3
+Malaysia's national car brand is known as:,a) Proton, b) Perodua, c) Toyota, d) Honda,1
+What is the name of the traditional Malay martial art?,a) Taekwondo, b) Silat, c) Kung Fu, d) Judo,2
+The highest mountain in Southeast Asia Mount Kinabalu is located in which Malaysian state?,a) Selangor, b) Pahang, c) Sabah, d)Johor, 3
+Which river is the longest in Malaysia?,a) Sungai Kelantan, b) Sungai Perak, c) Sungai Pahang, d) Sungai Rajang,3
+What is the official language of Malaysia?,a) English, b) Malay, c) Chinese, d) Tamil,2
+What is the name of the Malaysian dish consisting of rice cooked in coconut milk and served with various accompaniments?,a) Pho, b) Nasi Lemak, c) Pad Thai, d) Biryani,2
+Malaysia has a famous festival celebrating the victory of good over evil. What is it called?,a) Chinese New Year, b) Hari Raya Aidilfitri, c) Deepavali, d) Diwali,3
+In which year did Malaysia gain its independence from British colonial rule?,a) 1945, b) 1957, c) 1963, d) 1957,3

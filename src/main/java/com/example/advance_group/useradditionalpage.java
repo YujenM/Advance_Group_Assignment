@@ -1,5 +1,6 @@
 package com.example.advance_group;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -37,15 +38,21 @@ public class useradditionalpage{
     @FXML
     private Label displaydob;
 
+
     private int loggedInUserId;
 
     public void initialize(int loggedInUserId) {
         this.loggedInUserId = loggedInUserId;
+        System.out.println(loggedInUserId);
         fetchDataFromDatabase();
     }
 
+
     @FXML
     private Button logout;
+    @FXML
+    private Button taketestbtn;
+
     private void fetchDataFromDatabase() {
         try {
             Databaseconnection databaseconnection = new Databaseconnection();
@@ -68,7 +75,6 @@ public class useradditionalpage{
             }
 
             preparedStatement.close();
-            databaseconnection.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -86,6 +92,25 @@ public class useradditionalpage{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+    public void gototestdescriptionpage(ActionEvent event
+    ) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("testdescription.fxml"));
+            System.out.println(loggedInUserId);
+
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) taketestbtn.getScene().getWindow();
+            TestDescriptionPageController testDescriptionPageController=loader.getController();
+            testDescriptionPageController.initialize(loggedInUserId);
+            stage.setScene(scene);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

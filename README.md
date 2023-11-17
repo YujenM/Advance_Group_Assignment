@@ -36,7 +36,7 @@ representation of questions from each member's country to create a well-rounded 
 3. Analysis and Result Presentation:
 - The Analysis Form displays basic statistical results for the sorted test scores.
 - Statistical analyses include maximum, minimum, mean, mode, median, and standard deviation.
-- The result is sorted based on scores, clearly indicating pass/fail markers.
+- The com.example.advance_group.result is sorted based on scores, clearly indicating pass/fail markers.
 4. Result Display
 - The Result Form provides a drop-down list to select candidates.
 - For each candidate, the form displays the percentage of correct answers.

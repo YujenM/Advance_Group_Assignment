@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="709.0" prefWidth="671.0" styleClass="root" stylesheets="@loginsignup.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.advance_group.useradditionalpage">
+<AnchorPane prefHeight="709.0" prefWidth="671.0" styleClass="root" stylesheets="@loginsignup.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.advance_group.useradditionalpage">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -17,7 +17,7 @@
                     <font>
                         <Font name="System Bold" size="27.0" />
                     </font></Label>
-                <Button fx:id="taketestbtn" layoutX="149.0" layoutY="528.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="199.0" styleClass="loginsignup" text="Take a Test">
+                <Button fx:id="taketestbtn" layoutX="149.0" layoutY="528.0" mnemonicParsing="false" onAction="#gototestdescriptionpage" prefHeight="61.0" prefWidth="199.0" styleClass="loginsignup" text="Take a Test">
                <font>
                   <Font size="15.0" />
                </font></Button>

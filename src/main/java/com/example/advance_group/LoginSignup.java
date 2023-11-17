@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.Arrays;
 
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -48,7 +49,7 @@ public class LoginSignup {
 
     @FXML
     private TextField signupusername;
-    private int loggedInUserId;
+    public int loggedInUserId;
 
     @FXML
     void getcancel(ActionEvent event) {
@@ -78,6 +79,7 @@ public class LoginSignup {
 
             AdditionalInfo additionalInfoController = loader.getController();
             additionalInfoController.initialize(loggedInUserId);
+
             Scene scene = new Scene(root);
             Stage stage = (Stage) userlogin.getScene().getWindow();
             stage.setScene(scene);
@@ -188,37 +190,55 @@ public class LoginSignup {
     private  AdditionalInfo AdditionalInfo=new AdditionalInfo();
 
     public void validatelogin() {
-        Databaseconnection connectnow = new Databaseconnection();
-        Connection connectdb = connectnow.getconnection();
-        String verifyLogin = "SELECT id FROM citizendatabase WHERE username = ? AND password = ?";
+        if (getusername != null && getpassword != null) {
+            Databaseconnection connectnow = new Databaseconnection();
+            Connection connectdb = connectnow.getconnection();
+            String verifyLogin = "SELECT id FROM citizendatabase WHERE username = ? AND password = ?";
 
-        try {
-            PreparedStatement preparedStatement = connectdb.prepareStatement(verifyLogin);
-            preparedStatement.setString(1, getusername.getText());
-            preparedStatement.setString(2, getpassword.getText());
-            ResultSet queryResult = preparedStatement.executeQuery();
+            try {
+                PreparedStatement preparedStatement = connectdb.prepareStatement(verifyLogin);
+                preparedStatement.setString(1, getusername.getText());
+                preparedStatement.setString(2, getpassword.getText());
+                ResultSet queryResult = preparedStatement.executeQuery();
 
-            if (queryResult.next()) {
-                loggedInUserId = queryResult.getInt("id");
-                System.out.println("loggedInUserId: " + loggedInUserId);
-                if (isAdditionalInfoFilled(loggedInUserId)) {
-                    displaylogin.setText("Welcome back! You have already filled the form.");
-                    gotouseradtionalinfopage();
+                if (queryResult.next()) {
+                    loggedInUserId = queryResult.getInt("id");
+                    System.out.println("loggedInUserId: " + loggedInUserId);
+                    Quizpagecontroller quizController = new Quizpagecontroller();
+//                    quizController.setLoggedInUserId(loggedInUserId);
 
+                    if (isAdditionalInfoFilled(loggedInUserId)) {
+                        displaylogin.setText("Welcome back! You have already filled the form.");
+                        gotouseradtionalinfopage();
+                    } else {
+                        displaylogin.setText("Welcome " + getusername.getText());
+                        AdditionalInfo.setLoggedInUserId(loggedInUserId);
+                        gotoAdditionalinfopage();
+                    }
                 } else {
-                    displaylogin.setText("Welcome " + getusername.getText());
-                    AdditionalInfo.setLoggedInUserId(loggedInUserId);
-                    gotoAdditionalinfopage();
+                    displaylogin.setText("Invalid login");
                 }
-
-            } else {
-                displaylogin.setText("Invalid login");
+            } catch (Exception e) {
+                e.printStackTrace();
+                displaylogin.setText("Database Error");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            displaylogin.setText("Database Error");
+        } else {
+            displaylogin.setText("Enter your UserName and Password");
         }
     }
+    public int getLoggedInUserId() {
+
+        return loggedInUserId;
+    }
+
+
+
+private Quizpagecontroller quizpagecontroller;
+public void setQuizpagecontroller(Quizpagecontroller quizpagecontroller) {
+    this.quizpagecontroller = quizpagecontroller;
+
+}
+
     private boolean isAdditionalInfoFilled(int userId) {
         Databaseconnection connectnow = new Databaseconnection();
         Connection connectdb = connectnow.getconnection();
@@ -237,9 +257,9 @@ public class LoginSignup {
         return false;
     }
 
-    public int getLoggedInUserId() {
-        return loggedInUserId;
-    }
+
+
+
 
     @FXML
     void getlogin(ActionEvent event) {
