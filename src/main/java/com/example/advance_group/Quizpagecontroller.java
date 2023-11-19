@@ -124,7 +124,7 @@ public class Quizpagecontroller  {
 //        loggedInUserId = ((LoginSignup) loader.getController()).getLoggedInUserId();
         System.out.println("--------------");
         System.out.println(loggedInUserId);
-        File selectedFile = new File("D:\\Advance Programming assignment\\jfx\\Advance_Group\\src\\main\\java\\com\\example\\advance_group\\questions\\Malaysia.txt");
+        File selectedFile = new File("D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\java\\com\\example\\advance_group\\questions\\Malaysia.txt");
 
         if (selectedFile.exists()) {
             loadQuestions(selectedFile);
@@ -143,7 +143,7 @@ public class Quizpagecontroller  {
             stopTimer();
             System.out.println("Current Logged In User ID: " + loggedInUserId);
             System.out.println("hello");
-            writeResultsToFile("D:\\Advance Programming assignment\\jfx\\Advance_Group\\src\\main\\java\\com\\example\\advance_group\\result\\result.txt", loggedInUserId);
+            writeResultsToFile("D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\java\\com\\example\\advance_group\\result\\result.txt", loggedInUserId);
             gotoresultpage();
         }
     }

@@ -64,7 +64,7 @@ public class Result {
         }
     }
     private void readResultFromFile() {
-        try (BufferedReader br = new BufferedReader(new FileReader("D:\\Advance Programming assignment\\jfx\\Advance_Group\\src\\main\\java\\com\\example\\advance_group\\result\\result.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\java\\com\\example\\advance_group\\result\\result.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
 

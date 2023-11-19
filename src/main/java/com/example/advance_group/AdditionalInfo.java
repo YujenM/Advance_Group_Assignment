@@ -1,12 +1,16 @@
 package com.example.advance_group;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,6 +42,8 @@ public class AdditionalInfo {
 
     @FXML
     private Button subitform;
+    @FXML
+    private Label additionalinfotext;
 
     private Databaseconnection databaseconnection;
     private int loggedInUserId;
@@ -73,6 +79,26 @@ public class AdditionalInfo {
     }
     public void submitinfo(ActionEvent event) {
         try {
+            if (gerfathername.getText().isEmpty() || getmothername.getText().isEmpty() ||
+                    getfullname.getText().isEmpty() || gender.getSelectedToggle() == null ||
+                    selectcountry.getValue() == null || getcitizenshipid.getText().isEmpty() ||
+                    getadditonaldob.getValue() == null) {
+
+                additionalinfotext.setText("Please fill in all the fields.");
+                Timeline timeline = new Timeline(new KeyFrame(
+                        Duration.seconds(3),
+                        new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent event) {
+                                additionalinfotext.setText("");
+                            }
+                        }
+                ));
+                timeline.setCycleCount(1);
+                timeline.play();
+
+                return;
+            }
             Connection connectdb = databaseconnection.getconnection();
             String insertInfoQuery = "INSERT INTO additionalinfo (id,Fathername, Mothername, UserName, Gender, Nationality, CitizenshipId, Dob) VALUES (?,?, ?, ?, ?, ?, ?, ?)";
 
