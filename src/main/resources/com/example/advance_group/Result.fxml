@@ -45,11 +45,11 @@
                         <Font size="29.0" />
                     </font>
                 </Label>
-                <Label fx:id="qustionattempted" alignment="CENTER" layoutX="50.0" layoutY="227.0" prefHeight="82.0" prefWidth="194.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 16px; -fx-border-radius: 16px;" text="8/10" textFill="WHITE">
+                <Label fx:id="qustionattempted" alignment="CENTER" layoutX="50.0" layoutY="227.0" prefHeight="82.0" prefWidth="194.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 16px; -fx-border-radius: 16px;" textFill="WHITE">
                     <font>
                         <Font size="25.0" />
                     </font></Label>
-                <ProgressIndicator fx:id="correctProgress" layoutX="278.0" layoutY="227.0" minHeight="100.0" minWidth="100.0" prefHeight="128.0" prefWidth="131.0" progress="0.8" style="-fx-background-color: lightgreen; -fx-progress-color: green; -fx-font-weight: 900; -fx-font-size: 16PX; -fx-background-radius: 16PX; -fx-border-radius: 16PX; -fx-box-border: green;">
+                <ProgressIndicator fx:id="correctProgress" layoutX="278.0" layoutY="227.0" minHeight="100.0" minWidth="100.0" prefHeight="128.0" prefWidth="131.0" progress="1.0" style="-fx-background-color: lightgreen; -fx-progress-color: green; -fx-font-weight: 900; -fx-font-size: 16PX; -fx-background-radius: 16PX; -fx-border-radius: 16PX; -fx-box-border: green;">
                     <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </padding>
@@ -60,8 +60,8 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </padding>
                 </ProgressIndicator>
-                <Button layoutX="184.0" layoutY="353.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="119.0" styleClass="loginsignup" text="logout" />
-                <Button layoutX="50.0" layoutY="353.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="119.0" styleClass="loginsignup" text="Go to Home Page" />
+                <Button fx:id="logout" layoutX="184.0" layoutY="353.0" mnemonicParsing="false" onAction="#getlogout" prefHeight="56.0" prefWidth="119.0" styleClass="loginsignup" text="logout" />
+                <Button fx:id="gohome" layoutX="50.0" layoutY="353.0" mnemonicParsing="false" onAction="#gotouseradtionalinfopage" prefHeight="56.0" prefWidth="119.0" styleClass="loginsignup" text="Go to Home Page" />
 
             </children>
         </AnchorPane>

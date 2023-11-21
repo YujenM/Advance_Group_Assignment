@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Arrays;
+import java.util.Optional;
 
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -49,6 +50,23 @@ public class LoginSignup {
 
     @FXML
     private TextField signupusername;
+
+//    adminsignup
+@FXML
+private Label admindisplay;
+
+    @FXML
+    private Button adminsignup;
+
+    @FXML
+    private PasswordField getadminpassword;
+
+    @FXML
+    private TextField getadminusername;
+
+    @FXML
+    private Button goadminsignup;
+
     public int loggedInUserId;
 
     @FXML
@@ -101,6 +119,20 @@ public class LoginSignup {
             e.printStackTrace();
         }
     }
+    public void gotoadminpage(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminpage.fxml"));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) userlogin.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     private void saveUserToDatabase(String fullname, String username, String password) {
         Databaseconnection connectnow = new Databaseconnection();
@@ -128,7 +160,27 @@ public class LoginSignup {
             displaylsignupmessage.setText("Database Error");
         }
     }
-
+    private void saveadmindatatodatabase(String username, String password){
+        Databaseconnection adminconnect=new Databaseconnection();
+        Connection adminconnectdb= adminconnect.getconnection();
+        String query="INSERT INTO admin (Adminusername,password)VALUES(?,?)";
+        try {
+            PreparedStatement adminstatement = adminconnectdb.prepareStatement(query);
+            adminstatement.setString(1, username);
+            adminstatement.setString(2, password);
+            int adminrowinserted = adminstatement.executeUpdate();
+            if (adminrowinserted > 0) {
+                System.out.println("admin signup saved to database");
+            } else {
+                System.out.println("Failed to save");
+            }
+            adminstatement.close();
+            adminconnectdb.close();
+        }catch (Exception e){
+            e.printStackTrace();
+            admindisplay.setText("Database Error");
+        }
+    }
     public void Validatesignup() {
         if (signupusername.getText().isBlank() == false && signupemail.getText().isBlank() == false && signuppassword.getText().isBlank() == false) {
             try {
@@ -152,6 +204,56 @@ public class LoginSignup {
         } else {
             displaylsignupmessage.setText("Fill the form");
         }
+    }
+    private boolean verifyPin() {
+        TextInputDialog pinDialog = new TextInputDialog();
+        pinDialog.setHeaderText("Pin Verification");
+        pinDialog.setContentText("Enter the pin:");
+        Optional<String> result = pinDialog.showAndWait();
+        return result.isPresent() && result.get().equals("911");
+    }
+    public void validateadminsignup() {
+        if (!getadminusername.getText().isBlank() && !getadminpassword.getText().isBlank()) {
+            try {
+                String adminname = getadminusername.getText();
+                String adminpassword = getadminpassword.getText();
+
+                if (!adminname.isEmpty() && !adminpassword.isEmpty()) {
+                    if(isUsernameTaken(getadminusername.getText())){
+                        admindisplay.setText("Name already taken");
+                    }else {
+                        if (verifyPin()) {
+                            saveadmindatatodatabase(adminname, adminpassword);
+                            admindisplay.setText("Admin signup successful");
+                        } else {
+                            admindisplay.setText("Incorrect pin. Admin signup failed.");
+                        }
+                    }
+                } else {
+                    admindisplay.setText("Please fill in all fields");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void getadminsignup(){
+        validateadminsignup();
+
+    }
+    public void goadminsignuppage(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Adminsignup.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            Stage stage = (Stage) goadminsignup.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private boolean isUsernameTaken(String full_name) {
@@ -186,46 +288,53 @@ public class LoginSignup {
             e.printStackTrace();
         }
     }
-//    private useradditionalpage useradditionalpage = new useradditionalpage();
     private  AdditionalInfo AdditionalInfo=new AdditionalInfo();
+public void validatelogin() {
+    if (getusername != null && getpassword != null) {
+        Databaseconnection connectnow = new Databaseconnection();
+        Connection connectdb = connectnow.getconnection();
+        String verifyUserLogin = "SELECT id FROM citizendatabase WHERE username = ? AND password = ?";
+        String verifyAdminLogin = "SELECT id FROM admin WHERE Adminusername = ? AND password = ?";
 
-    public void validatelogin() {
-        if (getusername != null && getpassword != null) {
-            Databaseconnection connectnow = new Databaseconnection();
-            Connection connectdb = connectnow.getconnection();
-            String verifyLogin = "SELECT id FROM citizendatabase WHERE username = ? AND password = ?";
+        try {
+            PreparedStatement userPreparedStatement = connectdb.prepareStatement(verifyUserLogin);
+            userPreparedStatement.setString(1, getusername.getText());
+            userPreparedStatement.setString(2, getpassword.getText());
+            ResultSet userQueryResult = userPreparedStatement.executeQuery();
+            if (userQueryResult.next()) {
+                loggedInUserId = userQueryResult.getInt("id");
+                System.out.println("loggedInUserId: " + loggedInUserId);
 
-            try {
-                PreparedStatement preparedStatement = connectdb.prepareStatement(verifyLogin);
-                preparedStatement.setString(1, getusername.getText());
-                preparedStatement.setString(2, getpassword.getText());
-                ResultSet queryResult = preparedStatement.executeQuery();
-
-                if (queryResult.next()) {
-                    loggedInUserId = queryResult.getInt("id");
-                    System.out.println("loggedInUserId: " + loggedInUserId);
-                    Quizpagecontroller quizController = new Quizpagecontroller();
-//                    quizController.setLoggedInUserId(loggedInUserId);
-
-                    if (isAdditionalInfoFilled(loggedInUserId)) {
-                        displaylogin.setText("Welcome back! You have already filled the form.");
-                        gotouseradtionalinfopage();
-                    } else {
-                        displaylogin.setText("Welcome " + getusername.getText());
-                        AdditionalInfo.setLoggedInUserId(loggedInUserId);
-                        gotoAdditionalinfopage();
-                    }
+                if (isAdditionalInfoFilled(loggedInUserId)) {
+                    displaylogin.setText("Welcome back! You have already filled the form.");
+                    gotouseradtionalinfopage();
                 } else {
+                    displaylogin.setText("Welcome " + getusername.getText());
+                    AdditionalInfo.setLoggedInUserId(loggedInUserId);
+                    gotoAdditionalinfopage();
+                }
+            } else {
+                PreparedStatement adminPreparedStatement = connectdb.prepareStatement(verifyAdminLogin);
+                adminPreparedStatement.setString(1, getusername.getText());
+                adminPreparedStatement.setString(2, getpassword.getText());
+                ResultSet adminQueryResult = adminPreparedStatement.executeQuery();
+                if (adminQueryResult.next()) {
+                    displaylogin.setText("Welcome Admin: " + getusername.getText());
+                    gotoadminpage();
+                } else {
+
                     displaylogin.setText("Invalid login");
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-                displaylogin.setText("Database Error");
             }
-        } else {
-            displaylogin.setText("Enter your UserName and Password");
+        } catch (Exception e) {
+            e.printStackTrace();
+            displaylogin.setText("Database Error");
         }
+    } else {
+        displaylogin.setText("Enter your UserName and Password");
     }
+}
+
     public int getLoggedInUserId() {
 
         return loggedInUserId;

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="630.0" prefWidth="1153.0" styleClass="root" stylesheets="@loginsignup.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.advance_group.admincontroller">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <children>
+        <AnchorPane layoutX="86.0" layoutY="29.0" prefHeight="547.0" prefWidth="981.0" styleClass="boxbg">
+            <children>
+                <Label layoutX="130.0" layoutY="187.0" />
+                <Label layoutX="385.0" layoutY="168.0">
+                    <font>
+                        <Font size="26.0" />
+                    </font>
+                </Label>
+                <Label fx:id="qustionattempted" alignment="CENTER" layoutX="227.0" layoutY="324.0" prefHeight="82.0" prefWidth="194.0" style="-fx-background-color: dodgerblue; -fx-background-radius: 16px; -fx-border-radius: 16px;" textFill="WHITE">
+                    <font>
+                        <Font size="25.0" />
+                    </font></Label>
+                <ProgressIndicator fx:id="correctProgress" layoutX="454.0" layoutY="324.0" minHeight="100.0" minWidth="100.0" prefHeight="128.0" prefWidth="131.0" progress="0.0" style="-fx-background-color: lightgreen; -fx-progress-color: green; -fx-font-weight: 900; -fx-font-size: 16PX; -fx-background-radius: 16PX; -fx-border-radius: 16PX; -fx-box-border: green;">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </ProgressIndicator>
+
+                <ProgressIndicator fx:id="wrongProgress" layoutX="608.0" layoutY="324.0" minHeight="100.0" minWidth="100.0" prefHeight="128.0" prefWidth="131.0" progress="0.0" style="-fx-background-color: #d77979; -fx-progress-color: red; -fx-font-weight: 900; -fx-font-size: 16PX; -fx-background-radius: 16PX; -fx-border-radius: 16PX; -fx-box-border: red;">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </ProgressIndicator>
+                <Button fx:id="logout" layoutX="445.0" layoutY="449.0" mnemonicParsing="false" onAction="#getlogout" prefHeight="56.0" prefWidth="119.0" styleClass="loginsignup" text="logout" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="429.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@illuminati-transformed.jpeg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="421.0" layoutY="187.0" prefHeight="38.0" prefWidth="165.0" text="Illuminati">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="getusername" layoutX="382.0" layoutY="235.0" prefHeight="38.0" prefWidth="243.0" />
+
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

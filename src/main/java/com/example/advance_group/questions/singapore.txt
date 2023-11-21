@@ -1,21 +1,20 @@
-Question,Options,Answer
-What is the official language of Singapore?,a) Malay, b) English, c) Mandarin, d) Tamil,b) English
-Which iconic building is often referred to as the "Lion City"?,a) Merlion, b) Marina Bay Sands, c) Sentosa Island, d) Orchard Road,a) Merlion
-In what year did Singapore gain independence from Malaysia?,a) 1957, b) 1965, c) 1971, d) 1980,b) 1965
-What is the currency of Singapore?,a) Ringgit, b) Baht, c) Dollar, d) Rupiah,c) Dollar
-Which island is known for its thriving nightlife and entertainment in Singapore?,a) Pulau Ubin, b) Sentosa, c) Pulau Tekong, d) Orchard Road,d) Orchard Road
-What is the name of the airport in Singapore, one of the busiest in the world?,a) Changi Airport, b) Jurong Airport, c) Sentosa Airport, d) Merlion Airport,a) Changi Airport
-Which strait separates Singapore from Indonesia?,a) Malacca Strait, b) Singapore Strait, c) Lombok Strait, d) Bering Strait,b) Singapore Strait
-What is the traditional Singaporean dish made of rice and chicken, often served with chili sauce?,a) Mee Goreng, b) Hainanese Chicken Rice, c) Laksa, d) Char Kway Teow,b) Hainanese Chicken Rice
-What is the national flower of Singapore?,a) Orchid, b) Jasmine, c) Hibiscus, d) Lotus,a) Orchid
-Which event in Singapore is celebrated with the lighting of lanterns, making offerings, and boat races?,a) Deepavali, b) Chinese New Year, c) Vesak Day, d) Mid-Autumn Festival,d) Mid-Autumn Festival
-What is the name of the lion-headed fish statue that symbolizes Singapore?,a) Merlion, b) Dragonfish, c) Koi, d) Naga,a) Merlion
-The Singapore River flows into which body of water?,a) Andaman Sea, b) South China Sea, c) Java Sea, d) Bay of Bengal,b) South China Sea
-Which district in Singapore is known for its arts and heritage precinct?,a) Orchard, b) Bugis, c) Chinatown, d) Kampong Glam,d) Kampong Glam
-What is the name of the island resort known for its Universal Studios theme park in Singapore?,a) Sentosa Island, b) Pulau Ubin, c) Lazarus Island, d) Kusu Island,a) Sentosa Island
-The Singapore Flyer is a giant observation wheel located near which iconic area of Singapore?,a) Chinatown, b) Little India, c) Marina Bay, d) Raffles Place,c) Marina Bay
-What is the name of the famous shopping street in Singapore that is home to luxury brands and department stores?,a) Arab Street, b) Orchard Road, c) Haji Lane, d) Bugis Street,b) Orchard Road
-What is the name of the housing development board responsible for public housing in Singapore?,a) HDB, b) HUDC, c) BTO, d) CPF,a) HDB
-The iconic Raffles Hotel is named after Sir Stamford Raffles, who is known for:,a) Inventing the Singapore Sling cocktail, b) Founding modern Singapore, c) Building the Esplanade, d) Establishing the Sentosa Resort,b) Founding modern Singapore
-Which annual race is held on the Marina Bay Street Circuit in Singapore?,a) Singapore Grand Prix, b) Singapore Marathon, c) Dragon Boat Race, d) F1 Night Race,a) Singapore Grand Prix
-What is the name of the popular island that's a short ferry ride away from Singapore, known for its beaches and resorts?,a) Langkawi, b) Tioman, c) Pulau Ubin, d) Bintan,d) Bintan
+What is the official language of Singapore?,a) Malay, b) English, c) Mandarin, d) Tamil,2
+Which iconic building is often referred to as the "Lion City"?,a) Merlion, b) Marina Bay Sands, c) Sentosa Island, d) Orchard Road,1
+In what year did Singapore gain independence from Malaysia?,a) 1957, b) 1965, c) 1971, d) 1980,2
+What is the currency of Singapore?,a) Ringgit, b) Baht, c) Dollar, d) Rupiah,3
+Which island is known for its thriving nightlife and entertainment in Singapore?,a) Pulau Ubin, b) Sentosa, c) Pulau Tekong, d) Orchard Road,4
+What is the name of the airport in Singapore one of the busiest in the world?,a) Changi Airport, b) Jurong Airport, c) Sentosa Airport, d) Merlion Airport,1
+Which strait separates Singapore from Indonesia?,a) Malacca Strait, b) Singapore Strait, c) Lombok Strait, d) Bering Strait,2
+What is the traditional Singaporean dish made of rice and chicken often served with chili sauce?,a) Mee Goreng, b) Hainanese Chicken Rice, c) Laksa, d) Char Kway Teow,2
+What is the national flower of Singapore?,a) Orchid, b) Jasmine, c) Hibiscus, d) Lotus,1
+Which event in Singapore is celebrated with the lighting of lanterns making offerings  and boat races?,a) Deepavali, b) Chinese New Year, c) Vesak Day, d) Mid-Autumn Festival,4
+What is the name of the lion-headed fish statue that symbolizes Singapore?,a) Merlion, b) Dragonfish, c) Koi, d) Naga,1
+The Singapore River flows into which body of water?,a) Andaman Sea, b) South China Sea, c) Java Sea, d) Bay of Bengal,2
+Which district in Singapore is known for its arts and heritage precinct?,a) Orchard, b) Bugis, c) Chinatown, d) Kampong Glam,4
+What is the name of the island resort known for its Universal Studios theme park in Singapore?,a) Sentosa Island, b) Pulau Ubin, c) Lazarus Island, d) Kusu Island,1
+The Singapore Flyer is a giant observation wheel located near which iconic area of Singapore?,a) Chinatown, b) Little India, c) Marina Bay, d) Raffles Place,3
+What is the name of the famous shopping street in Singapore that is home to luxury brands and department stores?,a) Arab Street, b) Orchard Road, c) Haji Lane, d) Bugis Street,2
+What is the name of the housing development board responsible for public housing in Singapore?,a) HDB, b) HUDC, c) BTO, d) CPF,1
+The iconic Raffles Hotel is named after Sir Stamford Raffles who is known for:,a) Inventing the Singapore Sling cocktail, b) Founding modern Singapore, c) Building the Esplanade, d) Establishing the Sentosa Resort,2
+Which annual race is held on the Marina Bay Street Circuit in Singapore?,a) Singapore Grand Prix, b) Singapore Marathon, c) Dragon Boat Race, d) F1 Night Race,1
+What is the name of the popular island that's a short ferry ride away from Singapore known for its beaches and resorts?,a) Langkawi, b) Tioman, c) Pulau Ubin, d) Bintan,4

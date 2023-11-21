@@ -1,9 +1,14 @@
 package com.example.advance_group;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -29,6 +34,10 @@ public class Result {
 
     @FXML
     private ProgressIndicator wrongProgress;
+    @FXML
+    private Button gohome;
+    @FXML
+    private Button logout;
 
     private static int loggedInUserId;
 
@@ -72,20 +81,46 @@ public class Result {
                 if (data.length == 7) {
                     int questionId = Integer.parseInt(data[0]);
                     int correctCount = Integer.parseInt(data[3]);
-                    int totalCount = Integer.parseInt(data[4]);
-//                    String result = data[5];
+                    int wrongcount = Integer.parseInt(data[4]);
+                    float correctpercent=((float) correctCount/20);
+                    float wrongpercent=((float) wrongcount/20);
                     String verdict = data[6];
 
                     if (questionId == loggedInUserId) {
-                        correctProgress.setProgress((double) correctCount / totalCount);
-                        wrongProgress.setProgress(1.0 - correctProgress.getProgress());
-//                        displaylsignupmessage.setText("Result: " + result);
+                        correctProgress.setProgress((correctpercent));
+                        wrongProgress.setProgress(wrongpercent);
                         qustionattempted.setText("Result " + verdict);
-//                        qustionattempted.setText("Questions Attempted: " + totalCount);
                     }
                 }
             }
         } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+    public void gotouseradtionalinfopage() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("userinformation.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) gohome.getScene().getWindow();
+            useradditionalpage controller = loader.getController();
+            controller.initialize(loggedInUserId);
+            stage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void getlogout() {
+
+        Databaseconnection databaseconnection = new Databaseconnection();
+        databaseconnection.closeConnection();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) logout.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

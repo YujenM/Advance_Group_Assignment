@@ -1,21 +1,20 @@
-Question,Options,Answer
-Which river is considered the "Mother of Water" in Thailand?,a) Chao Phraya, b) Mekong, c) Ping, d) Kwai,a) Chao Phraya
-What is the traditional Thai greeting where the palms are placed together in a prayer-like gesture?,a) Sawadee Krub/Ka, b) Wai, c) Namaste, d) Konnichiwa,b) Wai
-Which famous festival in Thailand features water fights in April?,a) Songkran, b) Loi Krathong, c) Loy Krathong, d) Yi Peng,a) Songkran
-What is the capital of Thailand?,a) Chiang Mai, b) Phuket, c) Bangkok, d) Pattaya,c) Bangkok
-Which mountain range runs along Thailand's western border?,a) Himalayas, b) Alps, c) Andes, d) Western Ghats,a) Himalayas
-What is the currency of Thailand?,a) Baht, b) Ringgit, c) Rupiah, d) Kyat,a) Baht
-Which animal is revered and considered a sacred symbol in Thailand?,a) Elephant, b) Tiger, c) Cobra, d) Monkey,a) Elephant
-What is the famous Thai dish made from rice noodles stir-fried with eggs, tofu, shrimp, and various seasonings?,a) Green Curry, b) Pad Thai, c) Tom Yum, d) Som Tum,b) Pad Thai
-Which ancient capital city of Thailand is known for its historical ruins and temples?,a) Chiang Mai, b) Ayutthaya, c) Sukhothai, d) Pattaya,b) Ayutthaya
-What is the name of the Thai New Year celebration that involves building and floating small boats made of banana leaves and flowers on water?,a) Songkran, b) Loy Krathong, c) Loi Krathong, d) Yi Peng,b) Loy Krathong
-Which island in Thailand is famous for its full moon parties?,a) Koh Samui, b) Koh Phi Phi, c) Koh Tao, d) Koh Phangan,d) Koh Phangan
-The famous Bridge on the River Kwai is located in which Thai province?,a) Chiang Mai, b) Kanchanaburi, c) Krabi, d) Phang Nga,b) Kanchanaburi
-What is the name of the Thai kickboxing martial art that is a national sport of Thailand?,a) Taekwondo, b) Karate, c) Muay Thai, d) Capoeira,c) Muay Thai
-Which ancient script is used for writing the Thai language?,a) Sanskrit, b) Khmer, c) Lao, d) Devanagari,b) Khmer
-What is the main religion of Thailand?,a) Islam, b) Buddhism, c) Christianity, d) Hinduism,b) Buddhism
-The Emerald Buddha, considered the most sacred statue in Thailand, is located in which temple?,a) Wat Phra Kaew (Temple of the Emerald Buddha), b) Wat Pho (Temple of the Reclining Buddha), c) Wat Arun (Temple of Dawn), d) Wat Rong Khun (White Temple),a) Wat Phra Kaew (Temple of the Emerald Buddha)
-What is the name of the famous Thai street food made of skewered and grilled meat or seafood?,a) Tom Yum, b) Som Tum, c) Satay, d) Massaman Curry,c) Satay
-Thailand is known for its annual lantern festival, especially in the city of Chiang Mai. What is this festival called?,a) Songkran, b) Loi Krathong, c) Loy Krathong, d) Yi Peng,d) Yi Peng
-The ancient city of Sukhothai, a UNESCO World Heritage Site, was the first capital of which Thai kingdom?,a) Ayutthaya, b) Lan Na, c) Sukhothai, d) Rattanakosin,c) Sukhothai
-What is the largest national park in Thailand, known for its diverse wildlife and lush rainforests?,a) Erawan National Park, b) Khao Yai National Park, c) Doi Inthanon National Park, d) Mu Ko Ang Thong National Park,b) Khao Yai National Park
+Which river is considered the "Mother of Water" in Thailand?,a) Chao Phraya, b) Mekong, c) Ping, d) Kwai,1
+What is the traditional Thai greeting where the palms are placed together in a prayer-like gesture?,a) Sawadee Krub/Ka, b) Wai, c) Namaste, d) Konnichiwa,2
+Which famous festival in Thailand features water fights in April?,a) Songkran, b) Loi Krathong, c) Loy Krathong, d) Yi Peng,1
+What is the capital of Thailand?,a) Chiang Mai, b) Phuket, c) Bangkok, d) Pattaya,3
+Which mountain range runs along Thailand's western border?,a) Himalayas, b) Alps, c) Andes, d) Western Ghats,1
+What is the currency of Thailand?,a) Baht, b) Ringgit, c) Rupiah, d) Kyat,1
+Which animal is revered and considered a sacred symbol in Thailand?,a) Elephant, b) Tiger, c) Cobra, d) Monkey,1
+What is the famous Thai dish made from rice noodles stir-fried with eggs tofu shrimp and various seasonings?,a) Green Curry, b) Pad Thai, c) Tom Yum, d) Som Tum,2
+Which ancient capital city of Thailand is known for its historical ruins and temples?,a) Chiang Mai, b) Ayutthaya, c) Sukhothai, d) Pattaya,2
+What is the name of the Thai New Year celebration that involves building and floating small boats made of banana leaves and flowers on water?,a) Songkran, b) Loy Krathong, c) Loi Krathong, d) Yi Peng,2
+Which island in Thailand is famous for its full moon parties?,a) Koh Samui, b) Koh Phi Phi, c) Koh Tao, d) Koh Phangan,4
+The famous Bridge on the River Kwai is located in which Thai province?,a) Chiang Mai, b) Kanchanaburi, c) Krabi, d) Phang Nga,2
+What is the name of the Thai kickboxing martial art that is a national sport of Thailand?,a) Taekwondo, b) Karate, c) Muay Thai, d) Capoeira,3
+Which ancient script is used for writing the Thai language?,a) Sanskrit, b) Khmer, c) Lao, d) Devanagari,2
+What is the main religion of Thailand?,a) Islam, b) Buddhism, c) Christianity, d) Hinduism,2
+The Emerald Buddha considered the most sacred statue in Thailand is located in which temple?,a) Wat Phra Kaew (Temple of the Emerald Buddha), b) Wat Pho (Temple of the Reclining Buddha), c) Wat Arun (Temple of Dawn), d) Wat Rong Khun (White Temple),1
+What is the name of the famous Thai street food made of skewered and grilled meat or seafood?,a) Tom Yum, b) Som Tum, c) Satay, d) Massaman Curry,3
+Thailand is known for its annual lantern festival especially in the city of Chiang Mai. What is this festival called?,a) Songkran, b) Loi Krathong, c) Loy Krathong, d) Yi Peng,4
+The ancient city of Sukhothai a UNESCO World Heritage Site was the first capital of which Thai kingdom?,a) Ayutthaya, b) Lan Na, c) Sukhothai, d) Rattanakosin,3
+What is the largest national park in Thailand known for its diverse wildlife and lush rainforests?,a) Erawan National Park, b) Khao Yai National Park, c) Doi Inthanon National Park, d) Mu Ko Ang Thong National Park,2

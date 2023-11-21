@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -37,22 +39,16 @@ public class Quizpagecontroller  {
 
     @FXML
     private Label getquestion;
-
-    @FXML
-    private Button nextquestion;
-
     @FXML
     private Label noofquestionattempted;
-
-    @FXML
-    private Button previusquestion;
-
     @FXML
     private Label settimer;
 
     @FXML
     private Button submitbtn;
 
+    @FXML
+    private ImageView getflag;
     @FXML
     void getpreviousquestion(ActionEvent event) {
         if (currentQuestionIndex > 0) {
@@ -75,12 +71,13 @@ public class Quizpagecontroller  {
         }
 
     }
-
+    private List<Integer> clickedQuestionsList = new ArrayList<>();
     @FXML
     void option1clicked(ActionEvent event) {
         if (!answerSelected){
             checkAnswer(1);
             loadNextQuestion();
+            clickedQuestionsList.add(currentQuestionIndex);
         }
 
     }
@@ -90,6 +87,7 @@ public class Quizpagecontroller  {
         if (!answerSelected){
             checkAnswer(2);
             loadNextQuestion();
+            clickedQuestionsList.add(currentQuestionIndex);
 
         }
 
@@ -100,6 +98,7 @@ public class Quizpagecontroller  {
         if (!answerSelected){
             checkAnswer(3);
             loadNextQuestion();
+            clickedQuestionsList.add(currentQuestionIndex);
 
         }
 
@@ -110,30 +109,82 @@ public class Quizpagecontroller  {
         if (!answerSelected){
             checkAnswer(4);
             loadNextQuestion();
+            clickedQuestionsList.add(currentQuestionIndex);
 
         }
 
     }
     private int loggedInUserId;
-    public void initialize(int loggedInUserId) {
+    public void initialize(int loggedInUserId) throws FileNotFoundException {
         this.loggedInUserId = loggedInUserId;
         System.out.println("this is quiz"+loggedInUserId);
         getquestion();
+        printClickedQuestions();
     }
-    public void getquestion() {
-//        loggedInUserId = ((LoginSignup) loader.getController()).getLoggedInUserId();
-        System.out.println("--------------");
-        System.out.println(loggedInUserId);
-        File selectedFile = new File("D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\java\\com\\example\\advance_group\\questions\\Malaysia.txt");
+    private void printClickedQuestions() {
+        System.out.print("Clicked questions: ");
+        for (int i = 0; i < clickedQuestionsList.size(); i++) {
+            System.out.print(clickedQuestionsList.get(i));
+            if (i < clickedQuestionsList.size() - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println();
+    }
+    public String getcountryname() {
+        Databaseconnection connectnow = new Databaseconnection();
+        Connection connectdb = connectnow.getconnection();
+        String getCountryNameQuery = "SELECT nationality FROM additionalinfo WHERE id = ?";
+        String nationality = "";
 
-        if (selectedFile.exists()) {
+        try {
+            PreparedStatement preparedStatement = connectdb.prepareStatement(getCountryNameQuery);
+            preparedStatement.setInt(1, loggedInUserId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                nationality = resultSet.getString("nationality");
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return nationality;
+    }
+
+    public void getquestion() throws FileNotFoundException {
+        System.out.println("--------------");
+        String nationality = getcountryname();
+        System.out.println(nationality);
+        File selectedFile = null;
+        if (nationality.equals("Malaysia")) {
+            String imagePath = "D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\resources\\com\\example\\advance_group\\countryflag\\malaysia.png";
+            Image image = new Image(new FileInputStream(imagePath));
+            getflag.setImage(image);
+            selectedFile = new File("D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\java\\com\\example\\advance_group\\questions\\Malaysia.txt");
+        } else if (nationality.equals("Thailand")) {
+            String imagePath = "D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\resources\\com\\example\\advance_group\\countryflag\\thailand.png";
+            Image image = new Image(new FileInputStream(imagePath));
+            getflag.setImage(image);
+            selectedFile = new File("D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\java\\com\\example\\advance_group\\questions\\Thailand.txt");
+        } else if (nationality.equals("Singapore")) {
+            String imagePath = "D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\resources\\com\\example\\advance_group\\countryflag\\singapore.png";
+            Image image = new Image(new FileInputStream(imagePath));
+            getflag.setImage(image);
+            selectedFile = new File("D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\java\\com\\example\\advance_group\\questions\\singapore.txt");
+        }
+        System.out.println(loggedInUserId);
+
+        if (selectedFile != null && selectedFile.exists()) {
             loadQuestions(selectedFile);
             questionsAttemptedCounter = 1;
             startTimer();
         } else {
-            System.err.println("File does not exist: " + selectedFile.getAbsolutePath());
+            System.err.println("File does not exist: " + (selectedFile != null ? selectedFile.getAbsolutePath() : "null"));
         }
     }
+
 
     @FXML
     void submitButtonClicked(ActionEvent event) {
@@ -357,6 +408,8 @@ public class Quizpagecontroller  {
             updateTimerLabel();
             if (timeSeconds <= 0) {
                 timeline.stop();
+                disableAllButtons();
+                gotoresultpage();
             }
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -366,10 +419,18 @@ public class Quizpagecontroller  {
         int minutes = timeSeconds / 60;
         int seconds = timeSeconds % 60;
         settimer.setText(String.format("%02d:%02d", minutes, seconds));
+//        settimer.setText(String.format("%02d", seconds));
+
     }
     public void stopTimer() {
-
         timeline.stop();
+    }
+    private void disableAllButtons() {
+        btnopt1.setDisable(true);
+        btnopt2.setDisable(true);
+        btnopt3.setDisable(true);
+        btnopt4.setDisable(true);
+        submitbtn.setDisable(false);
     }
 
 
