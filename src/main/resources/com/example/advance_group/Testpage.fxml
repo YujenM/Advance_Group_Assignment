@@ -23,7 +23,7 @@
       <font>
          <Font size="18.0" />
       </font></Button>
-    <Button fx:id="btnopt4" layoutX="617.0" layoutY="462.0" mnemonicParsing="false" onAction="#option4clicked" prefHeight="93.0" prefWidth="469.0" styleClass="hexagon" text="option 4" textFill="WHITE">
+    <Button fx:id="btnopt4" layoutX="607.0" layoutY="468.0" mnemonicParsing="false" onAction="#option4clicked" prefHeight="93.0" prefWidth="469.0" styleClass="hexagon" text="option 4" textFill="WHITE">
       <font>
          <Font size="18.0" />
       </font></Button>

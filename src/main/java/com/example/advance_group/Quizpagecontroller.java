@@ -49,6 +49,8 @@ public class Quizpagecontroller  {
 
     @FXML
     private ImageView getflag;
+
+
     @FXML
     void getpreviousquestion(ActionEvent event) {
         if (currentQuestionIndex > 0) {
@@ -213,47 +215,31 @@ public class Quizpagecontroller  {
         }
     }
 
-
-
-
-
-    private void writeResultsToFile(String filePath, int userId) {
-        if (questionsList != null) {
-            try {
-                StringBuilder fileContent = new StringBuilder();
-                try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        fileContent.append(line).append("\n");
-                    }
-                }
+private void writeResultsToFile(String filePath, int userId) {
+    if (questionsList != null) {
+        try {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
                 String userData = getUserData(userId);
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, false))) {
-                    if (!userData.isEmpty()) {
-                        String userResult = userId + "," + userData + "," +
-                                correctAnswersCounter + "," + wrongAnswersList.size() + "," +
-                                questionsAttemptedCounter + "/" + questionsList.size() + "," +
-                                (calculatePassOrFail() ? "pass" : "fail") + "\n";
 
-                        if (fileContent.toString().contains(userId + ",")) {
+                if (!userData.isEmpty()) {
+                    String userResult = userId + "," + userData + "," +
+                            correctAnswersCounter + "," + wrongAnswersList.size() + "," +
+                            questionsAttemptedCounter + "/" + questionsList.size() + "," +
+                            (calculatePassOrFail() ? "pass" : "fail") + "\n";
 
-                            writer.write(fileContent.toString().replaceFirst(userId + ",.*\n", userResult));
-                            System.out.println("User data overwritten in file: " + userData);
-                        } else {
-                            writer.write(fileContent.toString() + userResult);
-                            System.out.println("User data appended to file: " + userData);
-                        }
-                    } else {
-                        System.out.println("Error: User data is empty.");
-                    }
+                    writer.write(userResult);
+                    System.out.println("User data appended to file: " + userData);
+                } else {
+                    System.out.println("Error: User data is empty.");
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-        } else {
-            System.err.println("Questions list is null.");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    } else {
+        System.err.println("Questions list is null.");
     }
+}
 
 
 
@@ -432,7 +418,4 @@ public class Quizpagecontroller  {
         btnopt4.setDisable(true);
         submitbtn.setDisable(false);
     }
-
-
-
 }

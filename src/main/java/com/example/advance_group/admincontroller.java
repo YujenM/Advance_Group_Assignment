@@ -17,8 +17,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class admincontroller {
     @FXML
@@ -31,6 +30,23 @@ public class admincontroller {
     private Button logout;
     @FXML
     private ChoiceBox<String> getusername;
+    @FXML
+    private Label getmean;
+
+    @FXML
+    private Label getmedian;
+
+    @FXML
+    private Label getmode;
+
+    @FXML
+    private Label getsd;
+
+    @FXML
+    private Label getmin;
+
+    @FXML
+    private Label getmax;
 
 
 
@@ -39,7 +55,57 @@ public class admincontroller {
         System.out.println("Initializing admin");
         populateUsernames();
         setupChoiceBoxListener();
+        meanmedian();
     }
+
+    private float calculateMean(int[] values) {
+        int sum = 0;
+        for (int value : values) {
+            sum += value;
+        }
+        return (float) sum / values.length;
+    }
+    private float calculateMedian(int[] values) {
+        Arrays.sort(values);
+        if (values.length % 2 == 0) {
+            int middle1 = values[values.length / 2 - 1];
+            int middle2 = values[values.length / 2];
+            return (float) (middle1 + middle2) / 2;
+        } else {
+            return values[values.length / 2];
+        }
+    }
+    private int calculateMode(int[] values) {
+        Map<Integer, Integer> countMap = new HashMap<>();
+        int maxCount = 0;
+        int mode = 0;
+        for (int value : values) {
+            int count = countMap.getOrDefault(value, 0) + 1;
+            countMap.put(value, count);
+            if (count > maxCount) {
+                maxCount = count;
+                mode = value;
+            }
+        }
+        return mode;
+    }
+    private float calculateStandardDeviation(int[] values) {
+        float mean = calculateMean(values);
+        float sumOfSquares = 0;
+        for (int value : values) {
+            sumOfSquares += Math.pow(value - mean, 2);
+        }
+        return (float) Math.sqrt(sumOfSquares / values.length);
+    }
+    private int calculateMinimum(int[] values) {
+        Arrays.sort(values);
+        return values[0];
+    }
+    private int calculateMaximum(int[] values) {
+        Arrays.sort(values);
+        return values[values.length - 1];
+    }
+
 
     private void populateUsernames() {
         List<String> usernames = readUsernamesFromFile();
@@ -67,6 +133,48 @@ public class admincontroller {
         }
         return usernames;
     }
+    private void meanmedian(){
+        try (BufferedReader br = new BufferedReader(new FileReader("D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\java\\com\\example\\advance_group\\result\\result.txt"))) {
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data.length >= 7) {
+                    int correctCount = Integer.parseInt(data[3]);
+                    int wrongcount = Integer.parseInt(data[4]);
+                    int[] values = {correctCount, wrongcount};
+//                   mean
+                    float meanValue = calculateMean(values);
+                    String meanAsString = Float.toString(meanValue);
+                    getmean.setText(meanAsString);
+//                    median
+                    System.out.println("Median: " + calculateMedian(values));
+                    float meadianvalues=calculateMedian(values);
+                    String medianAsstring=Float.toString(meadianvalues);
+                    getmedian.setText(medianAsstring);
+//                    mode
+                    float modevalues=calculateMode(values);
+                    String modetostring=Float.toString(modevalues);
+                    getmode.setText(modetostring);
+//                    SD
+                    float sdvalues=calculateStandardDeviation(values);
+                    String sdtostring=Float.toString(sdvalues);
+                    getsd.setText(sdtostring);
+//                    minimum
+                    float minvalues=calculateMinimum(values);
+                    String mintostring=Float.toString(minvalues);
+                    getmin.setText(mintostring);
+//                    maximum
+                    float maxvalues=calculateMaximum(values);
+                    String maxtostring=Float.toString(maxvalues);
+                    getmax.setText(maxtostring);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
     private void getResultsAndPrintVerdict() {
         String selectedUsername = getusername.getValue();
 
@@ -90,11 +198,9 @@ public class admincontroller {
 
                         System.out.println("ID: " + data[0] + ", result " + questionAttemptedStr + ", Correct Answer: "
                                 + correctCount + ", Wrong Answer: " + data[4]);
-
                         qustionattempted.setText(questionAttemptedStr);
                         correctProgress.setProgress(correctpercent);
                         wrongProgress.setProgress(wrongpercent);
-
                         break;
                     }
                 }
@@ -103,28 +209,6 @@ public class admincontroller {
             e.printStackTrace();
         }
     }
-
-
-
-
-
-    private List<String> readIdsFromFile() {
-        List<String> ids = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\java\\com\\example\\advance_group\\result\\result.txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(",");
-                if (data.length >= 2) {
-                    ids.add(data[1].trim());
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return ids;
-    }
-
-
 
     public void getlogout() {
 

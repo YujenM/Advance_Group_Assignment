@@ -1,4 +1,6 @@
 1,1,oiltom,5,15,20/20,fail
-2,2,aadhu,5,15,20/20,fail
+2,2,aadhu,5,14,20/20,fail
+3,3,b,6,14,20/20,fail
 4,4,Mavrick,6,14,20/20,fail
-3,3,b,7,13,20/20,fail
+5,5,w,6,14,20/20,fail
+1,1,oiltom,5,15,20/20,fail
