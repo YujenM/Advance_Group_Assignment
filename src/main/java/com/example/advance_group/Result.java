@@ -18,6 +18,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Result {
@@ -93,7 +94,7 @@ public class Result {
                         correctProgress.setProgress((correctpercent));
                         wrongProgress.setProgress(wrongpercent);
                         qustionattempted.setText("Result " + verdict);
-                        if(verdict=="pass"){
+                        if(Objects.equals(verdict, "pass")){
                             displayCitizen.setText("Congratulations, You are eligible for citizenship for Masathai");
                         }else {
                             displayCitizen.setText("You have failed the citizenship test for Masathai");

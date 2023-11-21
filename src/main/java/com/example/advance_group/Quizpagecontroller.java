@@ -17,6 +17,9 @@ import javafx.util.Duration;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -218,21 +221,24 @@ public class Quizpagecontroller  {
 private void writeResultsToFile(String filePath, int userId) {
     if (questionsList != null) {
         try {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-                String userData = getUserData(userId);
+            List<String> lines = Files.readAllLines(Paths.get(filePath));
+            boolean userExists = false;
 
-                if (!userData.isEmpty()) {
-                    String userResult = userId + "," + userData + "," +
-                            correctAnswersCounter + "," + wrongAnswersList.size() + "," +
-                            questionsAttemptedCounter + "/" + questionsList.size() + "," +
-                            (calculatePassOrFail() ? "pass" : "fail") + "\n";
-
-                    writer.write(userResult);
-                    System.out.println("User data appended to file: " + userData);
-                } else {
-                    System.out.println("Error: User data is empty.");
+            for (int i = 0; i < lines.size(); i++) {
+                String line = lines.get(i);
+                if (line.startsWith(userId + ",")) {
+                    lines.set(i, getUserResultString(userId));
+                    userExists = true;
+                    break;
                 }
             }
+
+            if (!userExists) {
+                Files.write(Paths.get(filePath), (getUserResultString(userId) + "\n").getBytes(), StandardOpenOption.APPEND);
+            } else {
+                Files.write(Paths.get(filePath), lines);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -240,7 +246,18 @@ private void writeResultsToFile(String filePath, int userId) {
         System.err.println("Questions list is null.");
     }
 }
-
+    private String getUserResultString(int userId) {
+        String userData = getUserData(userId);
+        if (!userData.isEmpty()) {
+            return userId + "," + userData + "," +
+                    correctAnswersCounter + "," + wrongAnswersList.size() + "," +
+                    questionsAttemptedCounter + "/" + questionsList.size() + "," +
+                    (calculatePassOrFail() ? "pass" : "fail");
+        } else {
+            System.out.println("Error: User data is empty.");
+            return "";
+        }
+    }
 
 
 
