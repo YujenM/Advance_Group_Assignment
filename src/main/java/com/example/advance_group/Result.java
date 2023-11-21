@@ -39,6 +39,9 @@ public class Result {
     @FXML
     private Button logout;
 
+    @FXML
+    private  Label displayCitizen;
+
     private static int loggedInUserId;
 
     public void getuserid(int loggedInUserId) {
@@ -90,7 +93,13 @@ public class Result {
                         correctProgress.setProgress((correctpercent));
                         wrongProgress.setProgress(wrongpercent);
                         qustionattempted.setText("Result " + verdict);
+                        if(verdict=="pass"){
+                            displayCitizen.setText("Congratulations, You are eligible for citizenship for Masathai");
+                        }else {
+                            displayCitizen.setText("You have failed the citizenship test for Masathai");
+                        }
                     }
+
                 }
             }
         } catch (IOException | NumberFormatException e) {

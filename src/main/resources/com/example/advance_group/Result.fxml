@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="542.0" prefWidth="819.0" styleClass="root" stylesheets="@loginsignup.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.advance_group.Result">
+<AnchorPane prefHeight="628.0" prefWidth="819.0" styleClass="root" stylesheets="@loginsignup.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.advance_group.Result">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <children>
-        <AnchorPane layoutX="62.0" layoutY="32.0" prefHeight="453.0" prefWidth="694.0" styleClass="boxbg">
+        <AnchorPane layoutX="62.0" layoutY="32.0" prefHeight="554.0" prefWidth="694.0" styleClass="boxbg">
             <children>
                 <Label fx:id="displaylsignupmessage" layoutX="130.0" layoutY="112.0" prefHeight="43.0" prefWidth="532.0" text="Name" textAlignment="RIGHT">
                     <font>
@@ -60,8 +60,13 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </padding>
                 </ProgressIndicator>
-                <Button fx:id="logout" layoutX="184.0" layoutY="353.0" mnemonicParsing="false" onAction="#getlogout" prefHeight="56.0" prefWidth="119.0" styleClass="loginsignup" text="logout" />
-                <Button fx:id="gohome" layoutX="50.0" layoutY="353.0" mnemonicParsing="false" onAction="#gotouseradtionalinfopage" prefHeight="56.0" prefWidth="119.0" styleClass="loginsignup" text="Go to Home Page" />
+                <Button fx:id="logout" layoutX="196.0" layoutY="449.0" mnemonicParsing="false" onAction="#getlogout" prefHeight="56.0" prefWidth="119.0" styleClass="loginsignup" text="logout" />
+                <Button fx:id="gohome" layoutX="50.0" layoutY="449.0" mnemonicParsing="false" onAction="#gotouseradtionalinfopage" prefHeight="56.0" prefWidth="119.0" styleClass="loginsignup" text="Go to Home Page" />
+            <Label fx:id="displayCitizen" layoutX="32.0" layoutY="362.0" prefHeight="43.0" prefWidth="648.0" text="Congratulations, You are not eligible for citizenship for Masathai" textAlignment="RIGHT">
+               <font>
+                  <Font name="FontAwesome" size="20.0" />
+               </font>
+            </Label>
 
             </children>
         </AnchorPane>
