@@ -3,18 +3,18 @@
 }
 
 .boxbg {
-    -fx-border-color: white; /* Set the border color to white */
-    -fx-border-width: 2; /* Set the border width */
-    -fx-border-radius: 10; /* Optional: Set border radius for rounded corners */
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
 }
 .hexagon {
-    -fx-shape: "M 0,50 25,0 75,0 100,50 75,100 25,100 Z"; /* Hexagon path coordinates */
+    -fx-shape: "M 0,50 25,0 75,0 100,50 75,100 25,100 Z";
     -fx-background-color: linear-gradient(to right, #03142A, derive(#1F1158, 30%));
-    -fx-background-insets: 0, 1, 2; /* Border insets */
-    -fx-padding: 2px; /* Adjust the padding for the border width */
-    -fx-background-radius: 10; /* Optional: Set background radius for rounded corners */
-    -fx-border-color: white; /* Set the border color to white */
-    -fx-border-width: 2; /* Set the border width */
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 2px;
+    -fx-background-radius: 10;
+    -fx-border-color: white;
+    -fx-border-width: 2;
     -fx-effect: dropshadow(gaussian, red, 5, 0, 0, 0);
 
 }

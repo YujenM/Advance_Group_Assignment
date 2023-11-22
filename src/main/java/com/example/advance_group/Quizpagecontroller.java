@@ -42,8 +42,7 @@ public class Quizpagecontroller  {
 
     @FXML
     private Label getquestion;
-    @FXML
-    private Label noofquestionattempted;
+
     @FXML
     private Label settimer;
 
@@ -52,13 +51,21 @@ public class Quizpagecontroller  {
 
     @FXML
     private ImageView getflag;
+    @FXML
+    private  Label displaymesage;
 
 
     @FXML
     void getpreviousquestion(ActionEvent event) {
         if (currentQuestionIndex > 0) {
             currentQuestionIndex--;
+            setButtonColorwhite(btnopt1);
+            setButtonColorwhite(btnopt2);
+            setButtonColorwhite(btnopt3);
+            setButtonColorwhite(btnopt4);
             displayCurrentQuestion();
+            checkAndDisableOptionButtons(currentQuestionIndex);
+            answerSelected = false;
         }
 
     }
@@ -66,9 +73,13 @@ public class Quizpagecontroller  {
     @FXML
     void loadNextQuestion(ActionEvent event) {
         if(currentQuestionIndex < questionsList.size() - 1){
-
             currentQuestionIndex++;
+            setButtonColorwhite(btnopt1);
+            setButtonColorwhite(btnopt2);
+            setButtonColorwhite(btnopt3);
+            setButtonColorwhite(btnopt4);
             displayCurrentQuestion();
+            checkAndDisableOptionButtons(currentQuestionIndex);
             answerSelected = false;
             if (currentQuestionIndex >= questionsList.size()) {
 
@@ -81,8 +92,12 @@ public class Quizpagecontroller  {
     void option1clicked(ActionEvent event) {
         if (!answerSelected){
             checkAnswer(1);
-            loadNextQuestion();
             clickedQuestionsList.add(currentQuestionIndex);
+            setButtonColorGreen(btnopt1);
+            System.out.println("Current Question Index: " + currentQuestionIndex);
+            updateQuestionsAttemptedMessage();
+
+
         }
 
     }
@@ -91,8 +106,11 @@ public class Quizpagecontroller  {
     void option2clicked(ActionEvent event) {
         if (!answerSelected){
             checkAnswer(2);
-            loadNextQuestion();
             clickedQuestionsList.add(currentQuestionIndex);
+            setButtonColorGreen(btnopt2);
+            System.out.println("Current Question Index: " + currentQuestionIndex);
+            updateQuestionsAttemptedMessage();
+
 
         }
 
@@ -102,9 +120,10 @@ public class Quizpagecontroller  {
     void option3clicked(ActionEvent event) {
         if (!answerSelected){
             checkAnswer(3);
-            loadNextQuestion();
             clickedQuestionsList.add(currentQuestionIndex);
-
+            setButtonColorGreen(btnopt3);
+            System.out.println("Current Question Index: " + currentQuestionIndex);
+            updateQuestionsAttemptedMessage();
         }
 
     }
@@ -113,18 +132,42 @@ public class Quizpagecontroller  {
     void option4clicked(ActionEvent event) {
         if (!answerSelected){
             checkAnswer(4);
-            loadNextQuestion();
             clickedQuestionsList.add(currentQuestionIndex);
-
+            setButtonColorGreen(btnopt4);
+            System.out.println("Current Question Index: " + currentQuestionIndex);
+            updateQuestionsAttemptedMessage();
         }
 
     }
+
+    private void setButtonColorGreen(Button button) {
+        button.setStyle("-fx-text-fill: green;");
+    }
+    private void setButtonColorwhite(Button button) {
+        button.setStyle("-fx-text-fill: white;");
+    }
+
+
+    private void checkAndDisableOptionButtons(int index) {
+        if (clickedQuestionsList.contains(index)) {
+            disableAllButtons();
+        }else {
+            enableallbtn();
+        }
+    }
+
     private int loggedInUserId;
     public void initialize(int loggedInUserId) throws FileNotFoundException {
         this.loggedInUserId = loggedInUserId;
         System.out.println("this is quiz"+loggedInUserId);
+        updateQuestionsAttemptedMessage();
         getquestion();
         printClickedQuestions();
+    }
+    private void updateQuestionsAttemptedMessage() {
+        int totalQuestions = 20;
+        int questionsAttempted = clickedQuestionsList.size();
+        displaymesage.setText("Questions attempted: " + questionsAttempted + "/" + totalQuestions);
     }
     private void printClickedQuestions() {
         System.out.print("Clicked questions: ");
@@ -149,7 +192,7 @@ public class Quizpagecontroller  {
 
             if (resultSet.next()) {
                 nationality = resultSet.getString("nationality");
-                
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -191,16 +234,26 @@ public class Quizpagecontroller  {
     }
 
 
+
+
+
     @FXML
     void submitButtonClicked(ActionEvent event) {
-        if (currentQuestionIndex == questionsList.size() - 1) {
+        if (clickedQuestionsList.size() == 20) {
             printCorrectAnswers();
             printWrongAnswers();
             stopTimer();
             System.out.println("Current Logged In User ID: " + loggedInUserId);
-            System.out.println("hello");
             writeResultsToFile("D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\java\\com\\example\\advance_group\\result\\result.txt", loggedInUserId);
             gotoresultpage();
+        } else {
+            int totalQuestions = 20;
+            int questionsAttempted = clickedQuestionsList.size();
+            System.out.println("Error: Not all questions have been answered.");
+            displaymesage.setText("Not all questions have been answered.");
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), e -> displaymesage.setText("Questions attempted: " + questionsAttempted + "/" + totalQuestions)));
+            timeline.setCycleCount(1);
+            timeline.play();
         }
     }
 
@@ -315,6 +368,7 @@ private void writeResultsToFile(String filePath, int userId) {
         }
     }
     public void displayCurrentQuestion() {
+
         if (questionsList != null && currentQuestionIndex >= 0 && currentQuestionIndex < questionsList.size()) {
             String[] currentQuestion = questionsList.get(currentQuestionIndex);
             if (currentQuestion.length >= 5) {
@@ -367,15 +421,12 @@ private void writeResultsToFile(String filePath, int userId) {
             }
             if (currentQuestionIndex < questionsList.size() - 1) {
                 questionsAttemptedCounter++;
-                updateAttemptedQuestionsLabel();
+
             }
             answerSelected = true;
         }
     }
 
-    private void updateAttemptedQuestionsLabel() {
-        noofquestionattempted.setText("Questions Attempted: " + questionsAttemptedCounter);
-    }
     public void printCorrectAnswers() {
 
         System.out.println("Number of correct answers: " + correctAnswersCounter);
@@ -434,5 +485,11 @@ private void writeResultsToFile(String filePath, int userId) {
         btnopt3.setDisable(true);
         btnopt4.setDisable(true);
         submitbtn.setDisable(false);
+    }
+    public void enableallbtn(){
+        btnopt1.setDisable(false);
+        btnopt2.setDisable(false);
+        btnopt3.setDisable(false);
+        btnopt4.setDisable(false);
     }
 }

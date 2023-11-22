@@ -35,10 +35,10 @@
             <Font size="24.0" />
         </font>
     </Label>
-    <Label fx:id="noofquestionattempted" alignment="CENTER" contentDisplay="CENTER" layoutX="378.0" layoutY="75.0" prefHeight="39.0" prefWidth="479.0" textFill="WHITE">
-        <font>
-            <Font size="15.0" />
-        </font>
-    </Label>
    <ImageView fx:id="getflag" fitHeight="72.0" fitWidth="116.0" layoutX="1051.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
+   <Label fx:id="displaymesage" alignment="CENTER" contentDisplay="CENTER" layoutX="239.0" layoutY="71.0" prefHeight="39.0" prefWidth="745.0" textFill="WHITE">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Label>
 </AnchorPane>
