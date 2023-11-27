@@ -302,7 +302,7 @@ private void writeResultsToFile(String filePath, int userId) {
     private String getUserResultString(int userId) {
         String userData = getUserData(userId);
         if (!userData.isEmpty()) {
-            return userId + "," + userData + "," +
+            return  userData + "," +
                     correctAnswersCounter + "," + wrongAnswersList.size() + "," +
                     questionsAttemptedCounter + "/" + questionsList.size() + "," +
                     (calculatePassOrFail() ? "pass" : "fail");

@@ -78,17 +78,24 @@ public class admincontroller {
     private int calculateMode(int[] values) {
         Map<Integer, Integer> countMap = new HashMap<>();
         int maxCount = 0;
-        int mode = 0;
+        List<Integer> modes = new ArrayList<>();
+
         for (int value : values) {
             int count = countMap.getOrDefault(value, 0) + 1;
             countMap.put(value, count);
+
             if (count > maxCount) {
                 maxCount = count;
-                mode = value;
+                modes.clear();
+                modes.add(value);
+            } else if (count == maxCount) {
+                modes.add(value);
             }
         }
-        return mode;
+        return modes.get(0);
     }
+
+
     private float calculateStandardDeviation(int[] values) {
         float mean = calculateMean(values);
         float sumOfSquares = 0;
@@ -124,8 +131,8 @@ public class admincontroller {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length >= 3) {
-                    usernames.add(data[2].trim());
+                if (data.length >= 2) {
+                    usernames.add(data[1].trim());
                 }
             }
         } catch (IOException e) {
@@ -133,63 +140,66 @@ public class admincontroller {
         }
         return usernames;
     }
-    private void meanmedian(){
+    private void meanmedian() {
+        List<Integer> correctCounts = new ArrayList<>();
+
         try (BufferedReader br = new BufferedReader(new FileReader("D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\java\\com\\example\\advance_group\\result\\result.txt"))) {
             String line;
 
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length >= 7) {
-                    int correctCount = Integer.parseInt(data[3]);
-                    int wrongcount = Integer.parseInt(data[4]);
-                    int[] values = {correctCount, wrongcount};
-//                   mean
-                    float meanValue = calculateMean(values);
-                    String meanAsString = Float.toString(meanValue);
-                    getmean.setText(meanAsString);
-//                    median
-                    System.out.println("Median: " + calculateMedian(values));
-                    float meadianvalues=calculateMedian(values);
-                    String medianAsstring=Float.toString(meadianvalues);
-                    getmedian.setText(medianAsstring);
-//                    mode
-                    float modevalues=calculateMode(values);
-                    String modetostring=Float.toString(modevalues);
-                    getmode.setText(modetostring);
-//                    SD
-                    float sdvalues=calculateStandardDeviation(values);
-                    String sdtostring=Float.toString(sdvalues);
-                    getsd.setText(sdtostring);
-//                    minimum
-                    float minvalues=calculateMinimum(values);
-                    String mintostring=Float.toString(minvalues);
-                    getmin.setText(mintostring);
-//                    maximum
-                    float maxvalues=calculateMaximum(values);
-                    String maxtostring=Float.toString(maxvalues);
-                    getmax.setText(maxtostring);
+                if (data.length >= 6) {
+                    int correctCount = Integer.parseInt(data[2]);
+                    correctCounts.add(correctCount);
                 }
+            }
+            // Calculate mean, median, mode, SD, minimum, maximum
+            if (!correctCounts.isEmpty()) {
+                int[] values = correctCounts.stream().mapToInt(Integer::intValue).toArray();
+
+                float meanValue = calculateMean(values);
+                String meanAsString = Float.toString(meanValue);
+                getmean.setText(meanAsString);
+
+                float medianValue = calculateMedian(values);
+                String medianAsString = Float.toString(medianValue);
+                getmedian.setText(medianAsString);
+
+                int modeValue = calculateMode(values);
+                String modeAsString = Integer.toString(modeValue);
+                getmode.setText(modeAsString);
+
+                float sdValue = calculateStandardDeviation(values);
+                String sdAsString = Float.toString(sdValue);
+                getsd.setText(sdAsString);
+
+                int minValue = calculateMinimum(values);
+                String minAsString = Integer.toString(minValue);
+                getmin.setText(minAsString);
+
+                int maxValue = calculateMaximum(values);
+                String maxAsString = Integer.toString(maxValue);
+                getmax.setText(maxAsString);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
     private void getResultsAndPrintVerdict() {
         String selectedUsername = getusername.getValue();
-
         try (BufferedReader br = new BufferedReader(new FileReader("D:\\Advance Programming assignment\\jfx\\Advance_Group_Assignment\\src\\main\\java\\com\\example\\advance_group\\result\\result.txt"))) {
             String line;
 
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length >= 7) {
-                    String username = data[2].trim();
+                if (data.length >= 6) {
+                    String username = data[1].trim();
 
                     if (username.equals(selectedUsername)) {
-                        String questionAttemptedStr = data[6].trim();
-                        int correctCount = Integer.parseInt(data[3]);
-                        int wrongcount = Integer.parseInt(data[4]);
+                        String questionAttemptedStr = data[5].trim();
+                        int correctCount = Integer.parseInt(data[2]);
+                        int wrongcount = Integer.parseInt(data[3]);
                         float correctpercent=((float) correctCount/20);
                         float wrongpercent=((float) wrongcount/20);
 
@@ -197,7 +207,7 @@ public class admincontroller {
                         System.out.println(wrongpercent);
 
                         System.out.println("ID: " + data[0] + ", result " + questionAttemptedStr + ", Correct Answer: "
-                                + correctCount + ", Wrong Answer: " + data[4]);
+                                + correctCount + ", Wrong Answer: " + data[3]);
                         qustionattempted.setText(questionAttemptedStr);
                         correctProgress.setProgress(correctpercent);
                         wrongProgress.setProgress(wrongpercent);

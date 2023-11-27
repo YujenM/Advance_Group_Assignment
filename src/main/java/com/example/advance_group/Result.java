@@ -82,13 +82,13 @@ public class Result {
             while ((line = br.readLine()) != null) {
 
                 String[] data = line.split(",");
-                if (data.length == 7) {
+                if (data.length == 6) {
                     int questionId = Integer.parseInt(data[0]);
-                    int correctCount = Integer.parseInt(data[3]);
-                    int wrongcount = Integer.parseInt(data[4]);
+                    int correctCount = Integer.parseInt(data[2]);
+                    int wrongcount = Integer.parseInt(data[3]);
                     float correctpercent=((float) correctCount/20);
                     float wrongpercent=((float) wrongcount/20);
-                    String verdict = data[6];
+                    String verdict = data[5];
 
                     if (questionId == loggedInUserId) {
                         correctProgress.setProgress((correctpercent));
